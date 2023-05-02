@@ -43,4 +43,4 @@
 
 # Diagrama de caso de uso
 
-![Diagrama de caso de uso](/home/danieldantasdev/RiderProjects/DevFreela/Documentation/use_cases.jpg)
+![Diagrama de caso de uso](./Documentation/use_cases.jpg)
