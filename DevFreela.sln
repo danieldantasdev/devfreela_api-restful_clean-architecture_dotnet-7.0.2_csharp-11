@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFreela.API", "DevFreela.API\DevFreela.API.csproj", "{08163D05-14A0-4403-A481-FC59CE6496A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFreela.Core", "DevFreela.Core\DevFreela.Core.csproj", "{AB5F03AD-591B-4455-A468-024DD332C0C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{08163D05-14A0-4403-A481-FC59CE6496A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08163D05-14A0-4403-A481-FC59CE6496A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08163D05-14A0-4403-A481-FC59CE6496A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB5F03AD-591B-4455-A468-024DD332C0C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5F03AD-591B-4455-A468-024DD332C0C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB5F03AD-591B-4455-A468-024DD332C0C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB5F03AD-591B-4455-A468-024DD332C0C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
