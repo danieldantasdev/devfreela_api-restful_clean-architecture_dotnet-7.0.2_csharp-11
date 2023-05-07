@@ -13,7 +13,7 @@ public class Project : BaseEntity
     public DateTime StartedAt { get; private set; }
     public DateTime FinishedAt { get; private set; }
     public ProjectStatusEnum StatusEnum { get; private set; }
-    public List<ProjectComments> Comments { get; private set; }
+    public List<ProjectComment> Comments { get; private set; }
 
     public Project(string title, string description, int idClient, int idFreelancer, decimal totalCost)
     {
@@ -24,7 +24,7 @@ public class Project : BaseEntity
         TotalCost = totalCost;
         CreatedAt = DateTime.Now;
         StatusEnum = ProjectStatusEnum.CREATED;
-        Comments = new List<ProjectComments>();
+        Comments = new List<ProjectComment>();
     }
 
     public void Cancel()
