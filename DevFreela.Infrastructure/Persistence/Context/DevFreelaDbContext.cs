@@ -11,7 +11,7 @@ public class DevFreelaDbContext
     public List<Skill> Skills { get; private set; }
     public List<ProjectComments> ProjectComments { get; private set; }
 
-    public DevFreelaDbContext(List<Project> projects, List<User> user, List<Skill> skills)
+    public DevFreelaDbContext()
     {
         Projects = new List<Project>
         {

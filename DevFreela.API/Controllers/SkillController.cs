@@ -3,23 +3,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DevFreela.API.Controllers;
 
-public class SkillController
+[Route("api/skills")]
+public class SkillController : ControllerBase
 {
-    [Route("api/skills")]
-    public class SkillsController : ControllerBase
+    private readonly ISkillService _skillService;
+
+    public SkillController(ISkillService skillService)
     {
-        private readonly ISkillService _skillService;
-        public SkillsController(ISkillService skillService)
-        {
-            _skillService = skillService;
-        }
+        _skillService = skillService;
+    }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var skills = _skillService.GetAll();
+    [HttpGet]
+    public IActionResult Get()
+    {
+        var skills = _skillService.GetAll();
 
-            return Ok(skills);
-        }
+        return Ok(skills);
     }
 }

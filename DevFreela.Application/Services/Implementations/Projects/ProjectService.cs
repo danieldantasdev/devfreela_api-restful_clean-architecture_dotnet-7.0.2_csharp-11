@@ -42,7 +42,7 @@ public class ProjectService : IProjectService
 
     public GetByIdProjectViewModel GetById(int id)
     {
-        var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == id);
+        var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == id) ?? null;
         var getByIdProjectViewModel = new GetByIdProjectViewModel(
             project.Id, project.Title, project.Description, project.TotalCost, project.StartedAt, project.FinishedAt
         );
