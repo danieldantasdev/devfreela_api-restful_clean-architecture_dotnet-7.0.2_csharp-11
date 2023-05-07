@@ -1,6 +1,6 @@
 namespace DevFreela.Core.Enums.Users;
 
-public enum UserStatus
+public enum UserStatusEnum
 {
     INACTIVE = -1,
     ACTIVE = 1
