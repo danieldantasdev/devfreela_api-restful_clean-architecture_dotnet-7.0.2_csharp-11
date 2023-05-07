@@ -4,7 +4,7 @@ using DevFreela.Core.Enums.Users;
 
 namespace DevFreela.Core.Entities.Users;
 
-public class User
+public class User : BaseEntity
 {
     public string FullName { get; private set; }
     public string Email { get; private set; }

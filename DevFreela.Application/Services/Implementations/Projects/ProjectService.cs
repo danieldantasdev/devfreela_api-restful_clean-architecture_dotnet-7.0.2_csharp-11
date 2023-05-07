@@ -35,7 +35,8 @@ public class ProjectService : IProjectService
     public List<GetAllProjectViewModel> GetAll(string query)
     {
         var projects = _devFreelaDbContext.Projects;
-        var getAllProjectViewModel = projects.Select(p => new GetAllProjectViewModel(p.Title, p.CreatedAt)).ToList();
+        var getAllProjectViewModel =
+            projects.Select(p => new GetAllProjectViewModel(p.Id, p.Title, p.CreatedAt)).ToList();
         return getAllProjectViewModel;
     }
 
@@ -51,7 +52,8 @@ public class ProjectService : IProjectService
     public void Update(UpdateProjectInputModel updateProjectInputModel)
     {
         var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == updateProjectInputModel.Id);
-        project.Update(updateProjectInputModel.Title, updateProjectInputModel.Description, updateProjectInputModel.TotalCost);
+        project.Update(updateProjectInputModel.Title, updateProjectInputModel.Description,
+            updateProjectInputModel.TotalCost);
     }
 
     public void Delete(int id)
