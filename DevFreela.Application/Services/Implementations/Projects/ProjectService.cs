@@ -27,7 +27,7 @@ public class ProjectService : IProjectService
 
     public void CreateComment(CreateCommentProjectInputModel createCommentProjectInputModel)
     {
-        var comment = new ProjectComments(createCommentProjectInputModel.Content,
+        var comment = new ProjectComment(createCommentProjectInputModel.Content,
             createCommentProjectInputModel.IdProject, createCommentProjectInputModel.IdUser);
         _devFreelaDbContext.ProjectComments.Add(comment);
     }
