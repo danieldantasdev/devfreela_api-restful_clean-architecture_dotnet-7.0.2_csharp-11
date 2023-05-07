@@ -1,3 +1,4 @@
+using System.Reflection;
 using DevFreela.Core.Entities.Projects;
 using DevFreela.Core.Entities.Skills;
 using DevFreela.Core.Entities.Users;
@@ -15,5 +16,10 @@ public class DevFreelaDbContext : DbContext
 
     public DevFreelaDbContext(DbContextOptions<DevFreelaDbContext> dbContextOptions) : base(dbContextOptions)
     {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }
