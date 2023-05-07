@@ -1,7 +1,7 @@
 using DevFreela.Application.Services.Interfaces.Skills;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DevFreela.API.Controllers;
+namespace DevFreela.API.Controllers.Skills;
 
 [Route("api/skills")]
 public class SkillController : ControllerBase
