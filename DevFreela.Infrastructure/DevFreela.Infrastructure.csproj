@@ -7,8 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Repositories\Implementations\" />
-      <Folder Include="Repositories\Interfaces\" />
+      <Folder Include="Persistence\Repositories\" />
+      <Folder Include="Persistence\Services\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DevFreela.Core\DevFreela.Core.csproj" />
     </ItemGroup>
 
 </Project>
