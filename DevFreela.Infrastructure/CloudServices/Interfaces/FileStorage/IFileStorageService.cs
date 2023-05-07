@@ -1,6 +1,6 @@
 namespace DevFreela.Infrastructure.CloudServices.Interfaces;
 
-public interface IFilesStorageService
+public interface IFileStorageService
 {
     void UploadFile(byte[] bytes, string fileName);
 }

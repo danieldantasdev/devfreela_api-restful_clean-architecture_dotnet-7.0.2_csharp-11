@@ -23,4 +23,8 @@
       <ProjectReference Include="..\DevFreela.Core\DevFreela.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models\Skills\" />
+    </ItemGroup>
+
 </Project>
