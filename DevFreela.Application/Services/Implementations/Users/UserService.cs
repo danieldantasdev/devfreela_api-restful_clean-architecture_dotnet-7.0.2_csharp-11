@@ -8,16 +8,26 @@ namespace DevFreela.Application.Services.Implementations.Users;
 
 public class UserService : IUserService
 {
-    private readonly DevFreelaDbContext _dbContext;
+    private readonly DevFreelaDbContext _devFreelaDbContext;
 
     public UserService(DevFreelaDbContext dbContext)
     {
-        _dbContext = dbContext;
+        _devFreelaDbContext = dbContext;
+    }
+    
+    public int Create(CreateUserInputModel createUserInputModel)
+    {
+        var user = new User(createUserInputModel.FullName, createUserInputModel.Email, createUserInputModel.BirthDate);
+
+        _devFreelaDbContext.Users.Add(user);
+        _devFreelaDbContext.SaveChanges();
+
+        return user.Id;
     }
 
     public GetUserByIdViewModel GetUserById(int id)
     {
-        var user = _dbContext.Users.SingleOrDefault(u => u.Id == id);
+        var user = _devFreelaDbContext.Users.SingleOrDefault(u => u.Id == id);
 
         if (user == null)
         {
@@ -25,14 +35,5 @@ public class UserService : IUserService
         }
 
         return new GetUserByIdViewModel(user.FullName, user.Email);
-    }
-
-    public int Create(CreateUserInputModel createUserInputModel)
-    {
-        var user = new User(createUserInputModel.FullName, createUserInputModel.Email, createUserInputModel.BirthDate);
-
-        _dbContext.Users.Add(user);
-
-        return user.Id;
     }
 }

@@ -21,6 +21,7 @@ public class ProjectService : IProjectService
         var project = new Project(createProjectInputModel.Title, createProjectInputModel.Description,
             createProjectInputModel.IdClient, createProjectInputModel.IdFreelance, createProjectInputModel.TotalCost);
         _devFreelaDbContext.Projects.Add(project);
+        _devFreelaDbContext.SaveChanges();
 
         return project.Id;
     }
@@ -30,6 +31,7 @@ public class ProjectService : IProjectService
         var comment = new ProjectComment(createCommentProjectInputModel.Content,
             createCommentProjectInputModel.IdProject, createCommentProjectInputModel.IdUser);
         _devFreelaDbContext.ProjectComments.Add(comment);
+        _devFreelaDbContext.SaveChanges();
     }
 
     public List<GetAllProjectViewModel> GetAll(string query)
@@ -54,23 +56,27 @@ public class ProjectService : IProjectService
         var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == updateProjectInputModel.Id);
         project.Update(updateProjectInputModel.Title, updateProjectInputModel.Description,
             updateProjectInputModel.TotalCost);
+        _devFreelaDbContext.SaveChanges();
     }
 
     public void Delete(int id)
     {
         var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == id);
         project.Cancel();
+        _devFreelaDbContext.SaveChanges();
     }
 
     public void Start(int id)
     {
         var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == id);
         project.Start();
+        _devFreelaDbContext.SaveChanges();
     }
 
     public void Finish(int id)
     {
         var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == id);
         project.Finish();
+        _devFreelaDbContext.SaveChanges();
     }
 }
