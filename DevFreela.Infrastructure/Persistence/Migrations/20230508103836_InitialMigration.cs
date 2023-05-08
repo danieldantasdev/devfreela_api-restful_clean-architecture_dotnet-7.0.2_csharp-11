@@ -76,7 +76,7 @@ namespace DevFreela.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "user_skill",
+                name: "skill_user",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -87,15 +87,15 @@ namespace DevFreela.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user_skill", x => x.Id);
+                    table.PrimaryKey("PK_skill_user", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_user_skill_skill_SkillId",
+                        name: "FK_skill_user_skill_SkillId",
                         column: x => x.SkillId,
                         principalTable: "skill",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_user_skill_user_IdSkill",
+                        name: "FK_skill_user_user_IdSkill",
                         column: x => x.IdSkill,
                         principalTable: "user",
                         principalColumn: "Id",
@@ -151,13 +151,13 @@ namespace DevFreela.Infrastructure.Persistence.Migrations
                 column: "IdUser");
 
             migrationBuilder.CreateIndex(
-                name: "IX_user_skill_IdSkill",
-                table: "user_skill",
+                name: "IX_skill_user_IdSkill",
+                table: "skill_user",
                 column: "IdSkill");
 
             migrationBuilder.CreateIndex(
-                name: "IX_user_skill_SkillId",
-                table: "user_skill",
+                name: "IX_skill_user_SkillId",
+                table: "skill_user",
                 column: "SkillId");
         }
 
@@ -168,7 +168,7 @@ namespace DevFreela.Infrastructure.Persistence.Migrations
                 name: "project_comment");
 
             migrationBuilder.DropTable(
-                name: "user_skill");
+                name: "skill_user");
 
             migrationBuilder.DropTable(
                 name: "project");

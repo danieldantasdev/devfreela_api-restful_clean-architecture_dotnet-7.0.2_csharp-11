@@ -118,7 +118,7 @@ namespace DevFreela.Infrastructure.Persistence.Migrations
                     b.ToTable("skill", (string)null);
                 });
 
-            modelBuilder.Entity("DevFreela.Core.Entities.Skills.UserSkill", b =>
+            modelBuilder.Entity("DevFreela.Core.Entities.Skills.SkillUser", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -141,7 +141,7 @@ namespace DevFreela.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("user_skill", (string)null);
+                    b.ToTable("skill_user", (string)null);
                 });
 
             modelBuilder.Entity("DevFreela.Core.Entities.Users.User", b =>
@@ -212,7 +212,7 @@ namespace DevFreela.Infrastructure.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DevFreela.Core.Entities.Skills.UserSkill", b =>
+            modelBuilder.Entity("DevFreela.Core.Entities.Skills.SkillUser", b =>
                 {
                     b.HasOne("DevFreela.Core.Entities.Users.User", null)
                         .WithMany("Skills")
