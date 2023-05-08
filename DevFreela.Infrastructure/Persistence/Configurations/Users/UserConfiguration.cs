@@ -9,6 +9,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     public void Configure(EntityTypeBuilder<User> entityTypeBuilder)
     {
         entityTypeBuilder.ToTable("user").HasKey(p => p.Id);
+        
         entityTypeBuilder
             .HasMany(u => u.Skills)
             .WithOne()
