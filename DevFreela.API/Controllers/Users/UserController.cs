@@ -19,7 +19,7 @@ public class UsersController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult GetById(int id)
     {
-        var user = _userService.GetUserById(id);
+        var user = _userService.GetById(id);
 
         if (user == null)
         {

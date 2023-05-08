@@ -23,9 +23,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.Configure<OpeningTimeOption>(builder.Configuration.GetSection("OpeningTime"));
 
 var connectionString = builder.Configuration.GetConnectionString("DevFreelaConnectionString");
-builder.Services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString ));
+builder.Services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<ExampleClass>(e => new ExampleClass { Name = "Initial Stage" });
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISkillService, SkillService>();

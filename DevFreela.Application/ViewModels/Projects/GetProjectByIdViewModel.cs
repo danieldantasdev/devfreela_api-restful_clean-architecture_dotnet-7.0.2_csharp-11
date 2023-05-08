@@ -1,6 +1,6 @@
 namespace DevFreela.Application.ViewModels.Projects;
 
-public class GetByIdProjectViewModel
+public class GetProjectByIdViewModel
 {
     public int Id { get; private set; }
     public string Title { get; private set; }
@@ -11,7 +11,7 @@ public class GetByIdProjectViewModel
     public string ClientFullName { get; private set; }
     public string FreelancerFullName { get; private set; }
 
-    public GetByIdProjectViewModel(int id, string title, string description, decimal totalCost, DateTime startedAt, DateTime finishedAt, string clientFullName, string freelancerFullName)
+    public GetProjectByIdViewModel(int id, string title, string description, decimal totalCost, DateTime startedAt, DateTime finishedAt, string clientFullName, string freelancerFullName)
     {
         Id = id;
         Title = title;

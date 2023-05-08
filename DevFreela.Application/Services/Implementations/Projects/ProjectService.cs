@@ -40,21 +40,21 @@ public class ProjectService : IProjectService
         _devFreelaDbContext.SaveChanges();
     }
 
-    public List<GetAllProjectViewModel> GetAll(string query)
+    public List<GetAllProjectsViewModel> GetAll(string query)
     {
         var projects = _devFreelaDbContext.Projects;
         var getAllProjectViewModel =
-            projects.Select(p => new GetAllProjectViewModel(p.Id, p.Title, p.CreatedAt)).ToList();
+            projects.Select(p => new GetAllProjectsViewModel(p.Id, p.Title, p.CreatedAt)).ToList();
         return getAllProjectViewModel;
     }
 
-    public GetByIdProjectViewModel GetById(int id)
+    public GetProjectByIdViewModel GetById(int id)
     {
         var project = _devFreelaDbContext.Projects
             .Include(p => p.Client)
             .Include(p => p.Freelancer)
             .SingleOrDefault(p => p.Id == id) ?? null;
-        var getByIdProjectViewModel = new GetByIdProjectViewModel(
+        var getByIdProjectViewModel = new GetProjectByIdViewModel(
             project.Id, project.Title, project.Description, project.TotalCost, project.StartedAt, project.FinishedAt,
             project.Client.FullName, project.Freelancer.FullName
         );
