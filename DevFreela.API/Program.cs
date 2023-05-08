@@ -6,6 +6,7 @@ using DevFreela.Application.Services.Interfaces.Projects;
 using DevFreela.Application.Services.Interfaces.Skills;
 using DevFreela.Application.Services.Interfaces.Users;
 using DevFreela.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +22,8 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.Configure<OpeningTimeOption>(builder.Configuration.GetSection("OpeningTime"));
 
-builder.Services.AddSingleton<DevFreelaDbContext>();
+var connectionString = builder.Configuration.GetConnectionString("DevFreelaConnectionString");
+builder.Services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString ));
 
 builder.Services.AddScoped<ExampleClass>(e => new ExampleClass { Name = "Initial Stage" });
 builder.Services.AddScoped<IProjectService, ProjectService>();

@@ -9,6 +9,13 @@ public class ProjectCommentsConfiguration : IEntityTypeConfiguration<ProjectComm
     public void Configure(EntityTypeBuilder<ProjectComment> entityTypeBuilder)
     {
         entityTypeBuilder.ToTable("project_comment").HasKey(p => p.Id);
+        
+        entityTypeBuilder
+            .HasOne(p => p.Project)
+            .WithMany(p => p.Comments)
+            .HasForeignKey(p => p.IdProject)
+            .OnDelete(DeleteBehavior.Restrict);
+        
         entityTypeBuilder
             .HasOne(p => p.User)
             .WithMany(p => p.Comments)

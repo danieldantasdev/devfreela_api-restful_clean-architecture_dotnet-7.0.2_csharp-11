@@ -15,7 +15,7 @@ public class Project : BaseEntity
     public DateTime CreatedAt { get; private set; }
     public DateTime StartedAt { get; private set; }
     public DateTime FinishedAt { get; private set; }
-    public ProjectStatusEnum StatusEnum { get; private set; }
+    public ProjectStatusEnum Status { get; private set; }
     public List<ProjectComment> Comments { get; private set; }
 
     public Project(string title, string description, int idClient, int idFreelancer, decimal totalCost)
@@ -26,32 +26,32 @@ public class Project : BaseEntity
         IdFreelancer = idFreelancer;
         TotalCost = totalCost;
         CreatedAt = DateTime.Now;
-        StatusEnum = ProjectStatusEnum.CREATED;
+        Status = ProjectStatusEnum.CREATED;
         Comments = new List<ProjectComment>();
     }
 
     public void Cancel()
     {
-        if (StatusEnum == ProjectStatusEnum.INPROGRESS || StatusEnum == ProjectStatusEnum.CREATED)
+        if (Status == ProjectStatusEnum.INPROGRESS || Status == ProjectStatusEnum.CREATED)
         {
-            StatusEnum = ProjectStatusEnum.CANCELLED;
+            Status = ProjectStatusEnum.CANCELLED;
         }
     }
 
     public void Start()
     {
-        if (StatusEnum == ProjectStatusEnum.CREATED)
+        if (Status == ProjectStatusEnum.CREATED)
         {
-            StatusEnum = ProjectStatusEnum.INPROGRESS;
+            Status = ProjectStatusEnum.INPROGRESS;
             FinishedAt = DateTime.Now;
         }
     }
 
     public void Finish()
     {
-        if (StatusEnum == ProjectStatusEnum.INPROGRESS)
+        if (Status == ProjectStatusEnum.INPROGRESS)
         {
-            StatusEnum = ProjectStatusEnum.FINISHED;
+            Status = ProjectStatusEnum.FINISHED;
             FinishedAt = DateTime.Now;
         }
     }
