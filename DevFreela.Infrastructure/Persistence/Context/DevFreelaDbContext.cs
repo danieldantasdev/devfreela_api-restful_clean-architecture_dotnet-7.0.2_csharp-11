@@ -11,7 +11,7 @@ public class DevFreelaDbContext : DbContext
     public DbSet<Project> Projects { get; private set; }
     public DbSet<ProjectComment> ProjectComments { get; private set; }
     public DbSet<User> Users { get; private set; }
-    public DbSet<UserSkill> UserSkills { get; private set; }
+    public DbSet<SkillUser> UserSkills { get; private set; }
     public DbSet<Skill> Skills { get; private set; }
 
     public DevFreelaDbContext(DbContextOptions<DevFreelaDbContext> dbContextOptions) : base(dbContextOptions)
