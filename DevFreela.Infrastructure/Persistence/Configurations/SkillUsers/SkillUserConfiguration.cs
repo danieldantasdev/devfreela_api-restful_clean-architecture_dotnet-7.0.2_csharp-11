@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DevFreela.Infrastructure.Persistence.Configurations.UserSkills;
 
-public class UserSkillConfiguration : IEntityTypeConfiguration<UserSkill>
+public class SkillUserConfiguration : IEntityTypeConfiguration<SkillUser>
 {
-    public void Configure(EntityTypeBuilder<UserSkill> entityTypeBuilder)
+    public void Configure(EntityTypeBuilder<SkillUser> entityTypeBuilder)
     {
-        entityTypeBuilder.ToTable("user_skill").HasKey(p => p.Id);
+        entityTypeBuilder.ToTable("skill_user").HasKey(s => s.Id);
     }
 }

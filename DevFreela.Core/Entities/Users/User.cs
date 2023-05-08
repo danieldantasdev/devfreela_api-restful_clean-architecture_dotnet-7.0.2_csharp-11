@@ -11,7 +11,7 @@ public class User : BaseEntity
     public DateTime BirthDate { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public UserStatusEnum Status { get; private set;  }
-    public List<UserSkill> Skills { get; private set; }
+    public List<SkillUser> Skills { get; private set; }
     public List<Project> OwnedProjects { get; private set; }
     public List<Project> FreelanceProjects { get; private set; }
     public List<ProjectComment> Comments { get; private set; }
@@ -23,7 +23,7 @@ public class User : BaseEntity
         BirthDate = birthDate;
         CreatedAt = DateTime.Now;
         Status = UserStatusEnum.ACTIVE;
-        Skills = new List<UserSkill>();
+        Skills = new List<SkillUser>();
         OwnedProjects = new List<Project>();
         FreelanceProjects = new List<Project>();
     }
