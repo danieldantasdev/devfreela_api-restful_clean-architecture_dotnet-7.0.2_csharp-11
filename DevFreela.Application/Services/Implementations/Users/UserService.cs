@@ -14,7 +14,7 @@ public class UserService : IUserService
     {
         _devFreelaDbContext = dbContext;
     }
-    
+
     public int Create(CreateUserInputModel createUserInputModel)
     {
         var user = new User(createUserInputModel.FullName, createUserInputModel.Email, createUserInputModel.BirthDate);
@@ -25,7 +25,7 @@ public class UserService : IUserService
         return user.Id;
     }
 
-    public GetUserByIdViewModel GetUserById(int id)
+    public GetUserByIdViewModel GetById(int id)
     {
         var user = _devFreelaDbContext.Users.SingleOrDefault(u => u.Id == id);
 
@@ -34,6 +34,6 @@ public class UserService : IUserService
             return null;
         }
 
-        return new GetUserByIdViewModel(user.FullName, user.Email);
+        return new GetUserByIdViewModel(user.Id, user.FullName, user.Email);
     }
 }
