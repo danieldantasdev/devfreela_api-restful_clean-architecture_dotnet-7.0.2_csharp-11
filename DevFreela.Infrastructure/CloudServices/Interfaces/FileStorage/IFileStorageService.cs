@@ -1,4 +1,4 @@
-namespace DevFreela.Infrastructure.CloudServices.Interfaces;
+namespace DevFreela.Infrastructure.CloudServices.Interfaces.FileStorage;
 
 public interface IFileStorageService
 {

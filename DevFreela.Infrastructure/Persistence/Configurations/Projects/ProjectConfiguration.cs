@@ -2,7 +2,7 @@ using DevFreela.Core.Entities.Projects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DevFreela.Infrastructure.Persistence.Configurations;
+namespace DevFreela.Infrastructure.Persistence.Configurations.Projects;
 
 public class ProjectConfiguration : IEntityTypeConfiguration<Project>
 {

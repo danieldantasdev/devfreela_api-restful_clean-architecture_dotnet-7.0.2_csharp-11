@@ -6,9 +6,8 @@ public class GetUserByIdViewModel
     public string FullName { get; private set; }
     public string Email { get; private set; }
 
-    public GetUserByIdViewModel(int id, string fullName, string email)
+    public GetUserByIdViewModel(string fullName, string email)
     {
-        Id = id;
         FullName = fullName;
         Email = email;
     }
