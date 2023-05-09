@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Persistence\Repositories\" />
       <Folder Include="Persistence\Services\" />
     </ItemGroup>
 
@@ -21,6 +20,12 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Dapper">
+        <HintPath>..\..\..\.nuget\packages\dapper\2.0.123\lib\net5.0\Dapper.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

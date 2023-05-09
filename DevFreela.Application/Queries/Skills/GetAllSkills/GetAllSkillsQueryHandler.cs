@@ -1,41 +1,22 @@
 using DevFreela.Application.ViewModels.Skills;
-using DevFreela.Infrastructure.Persistence.Context;
+using DevFreela.Core.DTOs.Skills;
+using DevFreela.Core.Entities.Skills;
+using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Skills;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace DevFreela.Application.Queries.Skills.GetAllSkills;
 
-public class GetAllSkillsQueryHandler : IRequestHandler<GetAllSkillsQuery, List<GetAllSkillsViewModel>>
+public class GetAllSkillsQueryHandler : IRequestHandler<GetAllSkillsQuery, List<SkillDto>>
 {
-    private readonly DevFreelaDbContext _devFreelaDbContext;
-    // private readonly string _connectionString;
-
-    public GetAllSkillsQueryHandler(DevFreelaDbContext devFreelaDbContext, IConfiguration connectionString)
+    private readonly ISkillRepository _skillRepository;
+    public GetAllSkillsQueryHandler(ISkillRepository skillRepository)
     {
-        _devFreelaDbContext = devFreelaDbContext;
-        // _connectionString = connectionString.GetConnectionString("DevFreelaConnectionString");
+        _skillRepository = skillRepository;
     }
 
-    public async Task<List<GetAllSkillsViewModel>> Handle(GetAllSkillsQuery getAllSkillsQuery,
+    public async Task<List<SkillDto>> Handle(GetAllSkillsQuery getAllSkillsQuery,
         CancellationToken cancellationToken)
     {
-        var skills = _devFreelaDbContext.Skills;
-        var getAllSkillsViewModel = await skills
-            .Select(s => new GetAllSkillsViewModel(s.Id, s.Description))
-            .ToListAsync();
-
-        return getAllSkillsViewModel;
-
-        // using (var sqlConnection = new SqlConnection(_connectionString))
-        // {
-        //     sqlConnection.Open();
-        //
-        //     var script = "SELECT Id, Description FROM Skills";
-        //
-        //     var skills = await sqlConnection.QueryAsync<SkillViewModel>(script);
-        //
-        //     return skills.ToList();
-        // }
+        return await _skillRepository.GetAllAsync();
     }
 }

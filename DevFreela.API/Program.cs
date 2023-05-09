@@ -1,6 +1,12 @@
 using DevFreela.API.Models;
 using DevFreela.Application.Commands.Projects.CreateProject;
 using DevFreela.Infrastructure.Persistence.Context;
+using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Projects;
+using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Skills;
+using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Users;
+using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Projects;
+using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Skills;
+using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Users;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -22,6 +28,10 @@ var connectionString = builder.Configuration.GetConnectionString("DevFreelaConne
 builder.Services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 
 builder.Services.AddMediatR(typeof(CreateProjectCommand));
 
