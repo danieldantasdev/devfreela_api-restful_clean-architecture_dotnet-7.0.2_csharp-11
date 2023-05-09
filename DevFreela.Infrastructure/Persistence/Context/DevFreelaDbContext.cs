@@ -4,7 +4,7 @@ using DevFreela.Core.Entities.Skills;
 using DevFreela.Core.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace DevFreela.Infrastructure.Persistence;
+namespace DevFreela.Infrastructure.Persistence.Context;
 
 public class DevFreelaDbContext : DbContext
 {

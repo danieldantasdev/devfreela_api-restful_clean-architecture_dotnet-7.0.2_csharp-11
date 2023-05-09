@@ -1,11 +1,7 @@
 using DevFreela.API.Models;
-using DevFreela.Application.Services.Implementations.Projects;
-using DevFreela.Application.Services.Implementations.Skills;
-using DevFreela.Application.Services.Implementations.Users;
-using DevFreela.Application.Services.Interfaces.Projects;
-using DevFreela.Application.Services.Interfaces.Skills;
-using DevFreela.Application.Services.Interfaces.Users;
-using DevFreela.Infrastructure.Persistence;
+using DevFreela.Application.Commands.Projects.CreateProject;
+using DevFreela.Infrastructure.Persistence.Context;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -25,11 +21,9 @@ builder.Services.Configure<OpeningTimeOption>(builder.Configuration.GetSection("
 var connectionString = builder.Configuration.GetConnectionString("DevFreelaConnectionString");
 builder.Services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<IProjectService, ProjectService>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<ISkillService, SkillService>();
-
 builder.Services.AddControllers();
+
+builder.Services.AddMediatR(typeof(CreateProjectCommand));
 
 var app = builder.Build();
 
