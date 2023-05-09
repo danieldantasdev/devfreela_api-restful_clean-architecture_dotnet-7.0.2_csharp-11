@@ -1,36 +1,25 @@
-using DevFreela.Infrastructure.Persistence;
-using DevFreela.Infrastructure.Persistence.Context;
+using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Projects;
 using MediatR;
-using Microsoft.Extensions.Configuration;
 
 namespace DevFreela.Application.Commands.Projects.StartProject;
 
 public class StartProjectCommandHandler : IRequestHandler<StartProjectCommand, Unit>
 {
-    private readonly DevFreelaDbContext _devFreelaDbContext;
-    // private readonly string? _connectionString;
+    private readonly IProjectRepository _projectRepository;
 
-    public StartProjectCommandHandler(DevFreelaDbContext devFreelaDbContext, IConfiguration configuration)
+    public StartProjectCommandHandler(IProjectRepository projectRepository)
     {
-        _devFreelaDbContext = devFreelaDbContext;
-        // _connectionString = configuration.GetConnectionString("DevFreelaConnectionString");
+        _projectRepository = projectRepository;
     }
-
+    
     public async Task<Unit> Handle(StartProjectCommand startProjectCommand, CancellationToken cancellationToken)
     {
-        var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == startProjectCommand.Id);
-        project?.Start();
-        await _devFreelaDbContext.SaveChangesAsync();
+        var project = await _projectRepository.GetByIdAsync(startProjectCommand.Id);
+
+        project.Start();
+
+        await _projectRepository.StartAsync(project);
 
         return Unit.Value;
-
-        // using (var sqlConnection = new SqlConnection(_connectionString))
-        // {
-        //     sqlConnection.Open();
-        //
-        //     var script = "UPDATE Projects SET Status = @status, StartedAt = @startedat WHERE Id = @id";
-        //
-        //     sqlConnection.Execute(script, new { status = project.Status, startedat = project.StartedAt, request.Id });
-        // }
     }
 }
