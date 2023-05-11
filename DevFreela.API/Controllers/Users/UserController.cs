@@ -1,6 +1,8 @@
 ﻿using DevFreela.API.Models.Users;
 using DevFreela.Application.Commands.Users.CreateUser;
+using DevFreela.Application.Commands.Users.SignInUser;
 using DevFreela.Application.Queries.Users.GetUserById;
+using DevFreela.Application.ViewModels.Users;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,11 +44,16 @@ public class UsersController : ControllerBase
     // api/users
 
     // api/users/1/login
-    [HttpPut("{id}/login")]
-    public async Task<IActionResult> Login(int id, [FromBody] LoginModel login)
+    [HttpPut("login")]
+    public async Task<IActionResult> Login([FromBody] SignInUserCommand signInUserCommand)
     {
-        // TODO: Para Módulo de Autenticação e Autorização
+        var signInUserViewModel = await _mediator.Send(signInUserCommand);
 
-        return NoContent();
+        if (signInUserViewModel == null)
+        {
+            return BadRequest();
+        }
+
+        return Ok(signInUserViewModel);
     }
 }
