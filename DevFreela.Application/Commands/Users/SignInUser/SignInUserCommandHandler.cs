@@ -1,5 +1,5 @@
 using DevFreela.Application.ViewModels.Users;
-using DevFreela.Core.Services;
+using DevFreela.Core.Services.Interfaces.Auth;
 using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Users;
 using MediatR;
 
