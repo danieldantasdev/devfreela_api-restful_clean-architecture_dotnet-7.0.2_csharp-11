@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using DevFreela.Core.Enums.Users;
+using MediatR;
 
 namespace DevFreela.Application.Commands.Users.CreateUser;
 
@@ -8,4 +9,5 @@ public class CreateUserCommand : IRequest<int>
     public string Password { get; set; }
     public string Email { get; set; }
     public DateTime BirthDate { get; set; }
+    public UserRoleEnum Role { get; set; }
 }
