@@ -1,3 +1,4 @@
+using DevFreela.API.Filters;
 using DevFreela.API.Models;
 using DevFreela.Application.Commands.Projects.CreateProject;
 using DevFreela.Application.Validators.Users;
@@ -31,7 +32,7 @@ var connectionString = builder.Configuration.GetConnectionString("DevFreelaConne
 builder.Services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
 
 //Controller
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add<ValidatorFilter>());
 
 //FluentValidation
 builder.Services.AddFluentValidationAutoValidation();
