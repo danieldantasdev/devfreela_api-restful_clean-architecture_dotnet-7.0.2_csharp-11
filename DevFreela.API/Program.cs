@@ -2,6 +2,7 @@ using DevFreela.API.Filters;
 using DevFreela.API.Models;
 using DevFreela.Application.Commands.Projects.CreateProject;
 using DevFreela.Application.Validators.Users;
+using DevFreela.Core.Services;
 using DevFreela.Infrastructure.Persistence.Context;
 using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Projects;
 using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Skills;
@@ -9,6 +10,7 @@ using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Users;
 using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Projects;
 using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Skills;
 using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Users;
+using DevFreela.Infrastructure.Services.Implementations.Auth;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
@@ -43,6 +45,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ISkillRepository, SkillRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 //Mediator
 builder.Services.AddMediatR(cfg =>
