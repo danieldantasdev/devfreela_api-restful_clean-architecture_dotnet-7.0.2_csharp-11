@@ -2,7 +2,7 @@ using DevFreela.API.Filters;
 using DevFreela.API.Models;
 using DevFreela.Application.Commands.Projects.CreateProject;
 using DevFreela.Application.Validators.Users;
-using DevFreela.Core.Services;
+using DevFreela.Core.Services.Interfaces.Auth;
 using DevFreela.Infrastructure.Persistence.Context;
 using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Projects;
 using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Skills;

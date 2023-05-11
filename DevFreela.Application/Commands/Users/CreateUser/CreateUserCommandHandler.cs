@@ -1,6 +1,5 @@
 ﻿using DevFreela.Core.Entities.Users;
-using DevFreela.Core.Services;
-using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Projects;
+using DevFreela.Core.Services.Interfaces.Auth;
 using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Users;
 using MediatR;
 
