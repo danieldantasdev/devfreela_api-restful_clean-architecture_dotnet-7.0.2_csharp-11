@@ -9,5 +9,5 @@ public class CreateUserCommand : IRequest<int>
     public string Password { get; set; }
     public string Email { get; set; }
     public DateTime BirthDate { get; set; }
-    public UserRoleEnum Role { get; set; }
+    public string Role { get; set; }
 }

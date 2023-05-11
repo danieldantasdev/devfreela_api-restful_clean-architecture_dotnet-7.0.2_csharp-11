@@ -19,8 +19,15 @@ public class UserRepository : IUserRepository
         return await _devFreelaDbContext.Users.SingleOrDefaultAsync(u => u.Id == id);
     }
 
+
     public Task<User> AddAsync(User user)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<User> GetUserByEmailAndPasswordHashAsync(string email, string passwordHash)
+    {
+        return await _devFreelaDbContext.Users.SingleOrDefaultAsync(u =>
+            u.Email == email && u.Password == passwordHash);
     }
 }
