@@ -18,7 +18,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
 
     public async Task<int> Handle(CreateUserCommand createUserCommand, CancellationToken cancellationToken)
     {
-        var passwordHash = _authService.computeSha256Hash(createUserCommand.Password);
+        var passwordHash = _authService.ComputeSha256Hash(createUserCommand.Password);
         
         var user = new User(createUserCommand.FullName, createUserCommand.Email, createUserCommand.BirthDate,
             passwordHash, createUserCommand.Role);
