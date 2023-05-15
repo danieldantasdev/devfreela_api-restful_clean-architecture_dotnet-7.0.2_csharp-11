@@ -1,12 +1,12 @@
 using System.Text.RegularExpressions;
-using DevFreela.Application.Commands.Users.CreateUser;
+using DevFreela.Application.Commands.Users.SignUpUser;
 using FluentValidation;
 
 namespace DevFreela.Application.Validators.Users;
 
-public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
+public class SignUpUserCommandValidator : AbstractValidator<SignUpUserCommand>
 {
-    public CreateUserCommandValidator()
+    public SignUpUserCommandValidator()
     {
         RuleFor(p => p.Email).EmailAddress().WithMessage("E-mail não válido!");
 

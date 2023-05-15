@@ -4,27 +4,27 @@ using DevFreela.Infrastructure.Persistence.Context;
 using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Users;
 using MediatR;
 
-namespace DevFreela.Application.Commands.Users.CreateUser;
+namespace DevFreela.Application.Commands.Users.SignUpUser;
 
-public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
+public class SignUpUserCommandHandler : IRequestHandler<SignUpUserCommand, int>
 {
     private readonly IUserRepository _userRepository;
     private readonly IAuthService _authService;
     private readonly DevFreelaDbContext _devFreelaDbContext;
 
-    public CreateUserCommandHandler(IUserRepository projectRepository, IAuthService authService, DevFreelaDbContext devFreelaDbContext)
+    public SignUpUserCommandHandler(IUserRepository projectRepository, IAuthService authService, DevFreelaDbContext devFreelaDbContext)
     {
         _userRepository = projectRepository;
         _authService = authService;
         _devFreelaDbContext = devFreelaDbContext;
     }
 
-    public async Task<int> Handle(CreateUserCommand createUserCommand, CancellationToken cancellationToken)
+    public async Task<int> Handle(SignUpUserCommand signUpUserCommand, CancellationToken cancellationToken)
     {
-        var passwordHash = _authService.ComputeSha256Hash(createUserCommand.Password);
+        var passwordHash = _authService.ComputeSha256Hash(signUpUserCommand.Password);
         
-        var user = new User(createUserCommand.FullName, createUserCommand.Email, createUserCommand.BirthDate,
-            passwordHash, createUserCommand.Role);
+        var user = new User(signUpUserCommand.FullName, signUpUserCommand.Email, signUpUserCommand.BirthDate,
+            passwordHash, signUpUserCommand.Role);
 
         // await _userRepository.AddAsync(user);
         await _devFreelaDbContext.AddAsync(user);

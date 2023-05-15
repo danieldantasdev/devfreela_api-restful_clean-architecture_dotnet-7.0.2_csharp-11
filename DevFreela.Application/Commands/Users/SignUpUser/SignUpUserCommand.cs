@@ -1,9 +1,9 @@
 ﻿using DevFreela.Core.Enums.Users;
 using MediatR;
 
-namespace DevFreela.Application.Commands.Users.CreateUser;
+namespace DevFreela.Application.Commands.Users.SignUpUser;
 
-public class CreateUserCommand : IRequest<int>
+public class SignUpUserCommand : IRequest<int>
 {
     public string FullName { get; set; }
     public string Password { get; set; }
