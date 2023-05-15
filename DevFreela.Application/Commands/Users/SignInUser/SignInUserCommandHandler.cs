@@ -20,7 +20,7 @@ public class SignInUserCommandHandler : IRequestHandler<SignInUserCommand, SignI
         CancellationToken cancellationToken)
     {
         //Utilizar o mesmo algoritmo para criar o Hash da senha
-        var passwordHash = _authService.computeSha256Hash(signInUserCommand.Password);
+        var passwordHash = _authService.ComputeSha256Hash(signInUserCommand.Password);
 
         //Buscar no banco um user que tenha e-mail e senha no formato Hash
         var user = await _userRepository.GetUserByEmailAndPasswordHashAsync(signInUserCommand.Email,

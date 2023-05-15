@@ -1,8 +1,6 @@
-﻿using DevFreela.API.Models.Users;
-using DevFreela.Application.Commands.Users.CreateUser;
+﻿using DevFreela.Application.Commands.Users.CreateUser;
 using DevFreela.Application.Commands.Users.SignInUser;
 using DevFreela.Application.Queries.Users.GetUserById;
-using DevFreela.Application.ViewModels.Users;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
