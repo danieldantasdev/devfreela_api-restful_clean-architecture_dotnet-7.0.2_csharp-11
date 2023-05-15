@@ -1,6 +1,6 @@
 namespace DevFreela.Application.InputModels.Users;
 
-public class CreateUserInputModel
+public class SignUpUserInputModel
 {
     public string FullName { get; set; }
     public string Password { get; set; }

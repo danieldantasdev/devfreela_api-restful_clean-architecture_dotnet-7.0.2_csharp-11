@@ -39,7 +39,7 @@ builder.Services.AddControllers(options => options.Filters.Add<ValidatorFilter>(
 //FluentValidation
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
-builder.Services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<SignUpUserCommandValidator>();
 
 //Repository
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
