@@ -43,6 +43,7 @@ public class UsersController : ControllerBase
 
     // api/users/1/login
     [HttpPut("login")]
+    // [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] SignInUserCommand signInUserCommand)
     {
         var signInUserViewModel = await _mediator.Send(signInUserCommand);

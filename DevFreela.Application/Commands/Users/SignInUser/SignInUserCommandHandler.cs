@@ -24,7 +24,7 @@ public class SignInUserCommandHandler : IRequestHandler<SignInUserCommand, SignI
 
         //Buscar no banco um user que tenha e-mail e senha no formato Hash
         var user = await _userRepository.GetUserByEmailAndPasswordHashAsync(signInUserCommand.Email,
-            signInUserCommand.Password);
+            passwordHash);
 
         //se não existir, erro no login
         if (user == null)
@@ -33,7 +33,7 @@ public class SignInUserCommandHandler : IRequestHandler<SignInUserCommand, SignI
         }
 
         //se existir, gerar token do usuário
-        var token = _authService.GenerateJwtToken(user.Email, user.Role);
+        var token = _authService.GenerateJwtToken(user.Email, user.Role.ToString());
         var signInUserViewModel = new SignInUserViewModel(signInUserCommand.Email, token);
 
         return signInUserViewModel;

@@ -1,8 +1,8 @@
 namespace DevFreela.Core.Enums.Users;
 
-public class UserRoleEnum
+public enum UserRoleEnum
 {
-    public static readonly string Administrator = "ADMINISTRATOR";
-    public static readonly string Client = "CLIENT";
-    public static readonly string Freelancer = "FREELANCER";
+    ADMINISTRATOR = 0,
+    CLIENT = 1,
+    FREELANCER = 2
 }
