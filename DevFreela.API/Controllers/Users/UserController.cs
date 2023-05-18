@@ -2,11 +2,13 @@
 using DevFreela.Application.Commands.Users.SignUpUser;
 using DevFreela.Application.Queries.Users.GetUserById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevFreela.API.Controllers.Users;
 
 [Route("api/users")]
+[Authorize]
 public class UsersController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -32,6 +34,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> Post([FromBody] SignUpUserCommand command)
     {
         var id = await _mediator.Send(command);
@@ -43,7 +46,7 @@ public class UsersController : ControllerBase
 
     // api/users/1/login
     [HttpPut("login")]
-    // [AllowAnonymous]
+    [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] SignInUserCommand signInUserCommand)
     {
         var signInUserViewModel = await _mediator.Send(signInUserCommand);

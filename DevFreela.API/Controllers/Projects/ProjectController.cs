@@ -7,11 +7,13 @@ using DevFreela.Application.Commands.Projects.UpdateProject;
 using DevFreela.Application.Queries.Projects.GetAllProjects;
 using DevFreela.Application.Queries.Projects.GetProjectById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevFreela.API.Controllers.Projects;
 
 [Route("api/projects")]
+[Authorize]
 public class ProjectController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -39,7 +41,7 @@ public class ProjectController : ControllerBase
 
     // api/projects?query=net core
     [HttpGet]
-    public async Task<IActionResult> Get(string queryUrl)
+    public async Task<IActionResult> Get(string? queryUrl)
     {
         var query = new GetAllProjectsQuery(queryUrl);
         var projects = await _mediator.Send(query);
