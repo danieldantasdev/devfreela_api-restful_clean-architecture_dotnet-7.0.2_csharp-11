@@ -29,5 +29,6 @@ public class User : BaseEntity
         OwnedProjects = new List<Project>();
         FreelanceProjects = new List<Project>();
         Password = password;
+        Role = role;
     }
 }
