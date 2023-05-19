@@ -1,6 +1,4 @@
-using DevFreela.Application.ViewModels.Skills;
 using DevFreela.Core.DTOs.Skills;
-using DevFreela.Core.Entities.Skills;
 using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Skills;
 using MediatR;
 
