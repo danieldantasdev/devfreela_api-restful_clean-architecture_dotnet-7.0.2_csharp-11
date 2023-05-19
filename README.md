@@ -44,3 +44,14 @@
 # Diagrama de caso de uso
 
 ![Diagrama de caso de uso](./DevFreela.Documentation/use_cases.jpg)
+
+# Tecnologias, padrões e arquiteturas
+- ASP.NET Core com .NET 7;
+- Arquitetura Limpa;
+- Entity Framework Core;
+- CQRS;
+- Padrão Repository;
+- Validação de API com FluentValidation;
+- Autenticação e Autorização com JWT;
+- Testes unitários com xUnit;
+- Mensageria com RabbitMQ;
