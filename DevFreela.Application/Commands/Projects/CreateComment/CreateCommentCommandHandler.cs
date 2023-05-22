@@ -1,5 +1,5 @@
 using DevFreela.Core.Entities.Projects;
-using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Projects;
+using DevFreela.Core.Repositories.Interfaces.Projects;
 using MediatR;
 
 namespace DevFreela.Application.Commands.Projects.CreateComment;

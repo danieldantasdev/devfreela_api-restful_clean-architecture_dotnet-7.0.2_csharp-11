@@ -1,6 +1,6 @@
 using DevFreela.Core.Entities.Projects;
 
-namespace DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Projects;
+namespace DevFreela.Core.Repositories.Interfaces.Projects;
 
 public interface IProjectRepository
 {

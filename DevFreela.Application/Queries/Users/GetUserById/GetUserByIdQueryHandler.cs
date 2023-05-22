@@ -1,5 +1,5 @@
 using DevFreela.Application.ViewModels.Users;
-using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Users;
+using DevFreela.Core.Repositories.Interfaces.Users;
 using MediatR;
 
 namespace DevFreela.Application.Queries.Users.GetUserById;

@@ -1,5 +1,5 @@
-using DevFreela.Core.DTOs.Skills;
-using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Skills;
+using DevFreela.Core.Dtos.Skills;
+using DevFreela.Core.Repositories.Interfaces.Skills;
 using MediatR;
 
 namespace DevFreela.Application.Queries.Skills.GetAllSkills;

@@ -1,7 +1,7 @@
 using Dapper;
 using DevFreela.Core.Entities.Projects;
+using DevFreela.Core.Repositories.Interfaces.Projects;
 using DevFreela.Infrastructure.Persistence.Context;
-using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Projects;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

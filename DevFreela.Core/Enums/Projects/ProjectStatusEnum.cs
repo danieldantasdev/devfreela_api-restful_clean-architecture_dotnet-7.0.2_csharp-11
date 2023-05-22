@@ -6,5 +6,6 @@ public enum ProjectStatusEnum
     SUSPENDED = 0,
     CREATED = 1,
     INPROGRESS = 2,
-    FINISHED = 3
+    FINISHED = 3,
+    PAYMENTINPROGRESS = 4
 }
