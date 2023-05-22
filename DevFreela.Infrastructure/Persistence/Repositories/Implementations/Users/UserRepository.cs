@@ -1,6 +1,6 @@
 using DevFreela.Core.Entities.Users;
+using DevFreela.Core.Repositories.Interfaces.Users;
 using DevFreela.Infrastructure.Persistence.Context;
-using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace DevFreela.Infrastructure.Persistence.Repositories.Implementations.Users;

@@ -1,4 +1,4 @@
-using DevFreela.Core.DTOs.Skills;
+using DevFreela.Core.Dtos.Skills;
 using MediatR;
 
 namespace DevFreela.Application.Queries.Skills.GetAllSkills;

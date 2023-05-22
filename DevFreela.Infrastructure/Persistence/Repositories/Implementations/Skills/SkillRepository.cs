@@ -1,6 +1,6 @@
 using Dapper;
-using DevFreela.Core.DTOs.Skills;
-using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Skills;
+using DevFreela.Core.Dtos.Skills;
+using DevFreela.Core.Repositories.Interfaces.Skills;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 

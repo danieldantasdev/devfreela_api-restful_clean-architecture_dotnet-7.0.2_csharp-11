@@ -56,6 +56,12 @@ public class Project : BaseEntity
         }
     }
 
+    public void SetPaymentPending()
+    {
+        Status = ProjectStatusEnum.PAYMENTINPROGRESS;
+        // FinishedAt = null;
+    }
+
     public void Update(string title, string description, decimal totalCost)
     {
         Title = title;

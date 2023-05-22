@@ -1,6 +1,6 @@
 using DevFreela.Core.Entities.Users;
 
-namespace DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Users;
+namespace DevFreela.Core.Repositories.Interfaces.Users;
 
 public interface IUserRepository
 

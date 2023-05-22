@@ -1,4 +1,4 @@
-namespace DevFreela.Core.DTOs.Skills;
+namespace DevFreela.Core.Dtos.Skills;
 
 public class SkillDto
 {

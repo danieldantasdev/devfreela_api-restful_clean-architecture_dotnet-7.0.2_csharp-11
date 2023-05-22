@@ -1,7 +1,7 @@
 ﻿using DevFreela.Core.Entities.Users;
+using DevFreela.Core.Repositories.Interfaces.Users;
 using DevFreela.Core.Services.Interfaces.Auth;
 using DevFreela.Infrastructure.Persistence.Context;
-using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Users;
 using MediatR;
 
 namespace DevFreela.Application.Commands.Users.SignUpUser;

@@ -1,6 +1,6 @@
 using DevFreela.Application.Commands.Projects.CreateProject;
 using DevFreela.Core.Entities.Projects;
-using DevFreela.Infrastructure.Persistence.Repositories.Interfaces.Projects;
+using DevFreela.Core.Repositories.Interfaces.Projects;
 using Moq;
 
 namespace DevFreela.UnitTests.Application.Commands.Projects;
