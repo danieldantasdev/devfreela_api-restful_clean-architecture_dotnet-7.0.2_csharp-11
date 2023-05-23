@@ -3,6 +3,7 @@ using DevFreela.API.Extensions;
 using DevFreela.API.Filters;
 using DevFreela.API.Models;
 using DevFreela.Application.Commands.Projects.CreateProject;
+using DevFreela.Application.Consumers;
 using DevFreela.Application.Validators.Users;
 using DevFreela.Infrastructure.Persistence.Context;
 using FluentValidation;
@@ -82,12 +83,16 @@ builder.Services.AddValidatorsFromAssemblyContaining<SignUpUserCommandValidator>
 
 //Di
 builder.Services.AddInfrastructure();
+builder.Services.AddHostedService<PaymentApprovedConsumer>();
 
 //Mediator
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly, typeof(CreateProjectCommand).Assembly);
 });
+
+//http
+// builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

@@ -16,7 +16,7 @@ public class PaymentService : IPaymentService
         _messageBusService = messageBusService;
     }
 
-    public void ProcessPayment(PaymentInfoDto paymentInfoDto)
+    public async void ProcessPayment(PaymentInfoDto paymentInfoDto)
     {
         var paymentInfoJson = JsonSerializer.Serialize(paymentInfoDto);
 

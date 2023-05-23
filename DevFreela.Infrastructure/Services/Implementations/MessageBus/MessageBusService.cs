@@ -21,6 +21,7 @@ public class MessageBusService : IMessageBusService
         {
             using (var channel = connection.CreateModel())
             {
+                //Garantir que a fila esteja criada
                 channel.QueueDeclare(
                     queue: queue,
                     durable: false,
@@ -28,6 +29,7 @@ public class MessageBusService : IMessageBusService
                     autoDelete: false,
                     arguments: null);
 
+                //Publicar a mensagem
                 channel.BasicPublish(
                     exchange: "",
                     routingKey: queue,
