@@ -21,8 +21,6 @@ public class FinishProjectCommandHandler : IRequestHandler<FinishProjectCommand,
     {
         var project = await _projectRepository.GetByIdAsync(finishProjectCommand.Id);
 
-        project.Finish();
-
         var paymentInfoDto = new PaymentInfoDto(finishProjectCommand.Id, finishProjectCommand.CreditCardNumber,
             finishProjectCommand.Cvv, finishProjectCommand.ExpiresAt, finishProjectCommand.FullName);
 

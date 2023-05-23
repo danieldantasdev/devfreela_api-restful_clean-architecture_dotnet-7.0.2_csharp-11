@@ -1,5 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1f8b7a3c_002Dfe12_002D4cde_002D9e26_002Db2a8ef69fdea/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from ProjectTest.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1f8b7a3c_002Dfe12_002D4cde_002D9e26_002Db2a8ef69fdea/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from ProjectTest.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Or&gt;
     &lt;ProjectFile&gt;036D0FCC-C646-4C6E-8EB5-A356D6A1E5AB/d:Core/d:Entities/d:Projects/f:ProjectTest.cs&lt;/ProjectFile&gt;
     &lt;TestAncestor&gt;
@@ -8,6 +8,6 @@
     &lt;/TestAncestor&gt;
   &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2ecd5074_002Dac4e_002D4cfa_002D9662_002D0dc31baebaa6/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from ProjectTest.cs #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2ecd5074_002Dac4e_002D4cfa_002D9662_002D0dc31baebaa6/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from ProjectTest.cs #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;ProjectFile&gt;036D0FCC-C646-4C6E-8EB5-A356D6A1E5AB/d:Core/d:Entities/d:Projects/f:ProjectTest.cs&lt;/ProjectFile&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
