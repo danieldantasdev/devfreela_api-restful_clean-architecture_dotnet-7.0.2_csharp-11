@@ -22,7 +22,6 @@
     <ItemGroup>
       <Folder Include="Commands\Projects\" />
       <Folder Include="Commands\Skills\" />
-      <Folder Include="InputModels\Skills\" />
       <Folder Include="Queries\Skills\" />
       <Folder Include="Queries\Users\" />
     </ItemGroup>

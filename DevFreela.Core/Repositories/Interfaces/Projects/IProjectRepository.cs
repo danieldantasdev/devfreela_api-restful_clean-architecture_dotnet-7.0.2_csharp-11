@@ -1,10 +1,11 @@
+using DevFreela.Core.Dtos.Paginations;
 using DevFreela.Core.Entities.Projects;
 
 namespace DevFreela.Core.Repositories.Interfaces.Projects;
 
 public interface IProjectRepository
 {
-    Task<List<Project>> GetAllAsync();
+    Task<PaginationResultDto<Project>> GetAllAsync(string query, int page = 1);
     Task<Project> GetDetailsByIdAsync(int id);
     Task<Project> GetByIdAsync(int id);
     Task AddAsync(Project project);

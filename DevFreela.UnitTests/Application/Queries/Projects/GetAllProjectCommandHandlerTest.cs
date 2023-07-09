@@ -22,7 +22,7 @@ public class GetAllProjectCommandHandlerTest
         var projectRepositoryMock = new Mock<IProjectRepository>();
         projectRepositoryMock.Setup(pr => pr.GetAllAsync().Result).Returns(projects);
 
-        var getAllProjectsQuery = new GetAllProjectsQuery("");
+        var getAllProjectsQuery = new GetAllProjectsQueryInputModel("");
         var getAllProjectsQueryHandler = new GetAllProjectsQueryHandler(projectRepositoryMock.Object);
 
         //Act

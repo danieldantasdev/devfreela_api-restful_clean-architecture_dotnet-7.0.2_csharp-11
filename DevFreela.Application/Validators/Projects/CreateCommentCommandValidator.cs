@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace DevFreela.Application.Validators.Projects
 {
-    public class CreateCommentCommandValidator : AbstractValidator<CreateCommentCommand>
+    public class CreateCommentCommandValidator : AbstractValidator<CreateCommentCommandInputModel>
     {
         public CreateCommentCommandValidator()
         {

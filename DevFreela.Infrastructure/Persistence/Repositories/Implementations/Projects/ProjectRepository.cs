@@ -1,6 +1,8 @@
 using Dapper;
+using DevFreela.Core.Dtos.Paginations;
 using DevFreela.Core.Entities.Projects;
 using DevFreela.Core.Repositories.Interfaces.Projects;
+using DevFreela.Infrastructure.Extensions;
 using DevFreela.Infrastructure.Persistence.Context;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -12,16 +14,27 @@ public class ProjectRepository : IProjectRepository
 {
     private readonly DevFreelaDbContext _devFreelaDbContext;
     private readonly string _connectionString;
-    
+    private readonly int PAGE_SIZE = 2;
+
     public ProjectRepository(DevFreelaDbContext dbContext, IConfiguration configuration)
     {
         _devFreelaDbContext = dbContext;
         _connectionString = configuration.GetConnectionString("DevFreelaConnectionString");
     }
 
-    public async Task<List<Project>> GetAllAsync()
+    public async Task<PaginationResultDto<Project>>  GetAllAsync(string query, int page)
     {
-        return await _devFreelaDbContext.Projects.ToListAsync();
+        IQueryable<Project> projects = _devFreelaDbContext.Projects;
+
+        if (!string.IsNullOrWhiteSpace(query))
+        {
+            projects = projects.Where(p =>
+                p.Title.Contains(query) ||
+                p.Description.Contains(query)
+            );
+        }
+
+        return await projects.GetPaged<Project>(page, PAGE_SIZE);
     }
 
     public async Task<Project> GetDetailsByIdAsync(int id)
@@ -46,7 +59,8 @@ public class ProjectRepository : IProjectRepository
 
             var script = "UPDATE Projects SET Status = @status, StartedAt = @startedat WHERE Id = @id";
 
-            await sqlConnection.ExecuteAsync(script, new { status = project.Status, startedat = project.StartedAt, project.Id });
+            await sqlConnection.ExecuteAsync(script,
+                new { status = project.Status, startedat = project.StartedAt, project.Id });
         }
     }
 

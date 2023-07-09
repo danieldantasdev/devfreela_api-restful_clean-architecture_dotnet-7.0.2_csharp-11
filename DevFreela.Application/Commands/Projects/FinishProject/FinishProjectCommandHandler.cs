@@ -5,7 +5,7 @@ using MediatR;
 
 namespace DevFreela.Application.Commands.Projects.FinishProject;
 
-public class FinishProjectCommandHandler : IRequestHandler<FinishProjectCommand, bool>
+public class FinishProjectCommandHandler : IRequestHandler<FinishProjectCommandInputModel, FinishProjectCommandViewModel>
 {
     private readonly IProjectRepository _projectRepository;
     private readonly IPaymentService _paymentService;
@@ -17,12 +17,12 @@ public class FinishProjectCommandHandler : IRequestHandler<FinishProjectCommand,
     }
 
 
-    public async Task<bool> Handle(FinishProjectCommand finishProjectCommand, CancellationToken cancellationToken)
+    public async Task<FinishProjectCommandViewModel> Handle(FinishProjectCommandInputModel finishProjectCommandInputModel, CancellationToken cancellationToken)
     {
-        var project = await _projectRepository.GetByIdAsync(finishProjectCommand.Id);
+        var project = await _projectRepository.GetByIdAsync(finishProjectCommandInputModel.Id);
 
-        var paymentInfoDto = new PaymentInfoDto(finishProjectCommand.Id, finishProjectCommand.CreditCardNumber,
-            finishProjectCommand.Cvv, finishProjectCommand.ExpiresAt, finishProjectCommand.FullName);
+        var paymentInfoDto = new PaymentInfoDto(finishProjectCommandInputModel.Id, finishProjectCommandInputModel.CreditCardNumber,
+            finishProjectCommandInputModel.Cvv, finishProjectCommandInputModel.ExpiresAt, finishProjectCommandInputModel.FullName);
 
         _paymentService.ProcessPayment(paymentInfoDto);
 
@@ -30,6 +30,6 @@ public class FinishProjectCommandHandler : IRequestHandler<FinishProjectCommand,
 
         await _projectRepository.SaveChangesAsync();
 
-        return true;
+        return new FinishProjectCommandViewModel(true);
     }
 }

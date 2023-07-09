@@ -1,10 +1,9 @@
-using DevFreela.Application.ViewModels.Users;
 using DevFreela.Core.Repositories.Interfaces.Users;
 using MediatR;
 
 namespace DevFreela.Application.Queries.Users.GetUserById;
 
-public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, GetUserByIdViewModel>
+public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQueryInputModel, GetUserByIdQueryViewModel>
 {
     private readonly IUserRepository _userRepository;
 
@@ -13,16 +12,16 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, GetUser
         _userRepository = userRepository;
     }
 
-    public async Task<GetUserByIdViewModel> Handle(GetUserByIdQuery getUserByIdQuery,
+    public async Task<GetUserByIdQueryViewModel> Handle(GetUserByIdQueryInputModel getUserByIdQueryInputModel,
         CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetByIdAsync(getUserByIdQuery.Id);
+        var user = await _userRepository.GetByIdAsync(getUserByIdQueryInputModel.Id);
 
         if (user == null)
         {
             return null;
         }
 
-        return new GetUserByIdViewModel(user.FullName, user.Email);
+        return new GetUserByIdQueryViewModel(user.FullName, user.Email);
     }
 }
