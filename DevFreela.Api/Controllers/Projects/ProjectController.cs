@@ -42,7 +42,7 @@ public class ProjectController : ControllerBase
 
     // api/projects?query=net core
     [HttpGet]
-    // [Authorize(Roles = "ADMINISTRATOR, CLIENT, FREELANCER")]
+    [Authorize(Roles = "ADMINISTRATOR, CLIENT, FREELANCER")]
     public async Task<IActionResult> Get([FromQuery] GetAllProjectsQueryInputModel getAllProjectsQueryInputModel)
     {
         var projects = await _mediator.Send(getAllProjectsQueryInputModel);
