@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace DevFreela.Application.Validators.Projects;
 
-public class CreateProjectCommandValidator : AbstractValidator<CreateProjectCommand>
+public class CreateProjectCommandValidator : AbstractValidator<CreateProjectCommandInputModel>
 {
     public CreateProjectCommandValidator()
     {

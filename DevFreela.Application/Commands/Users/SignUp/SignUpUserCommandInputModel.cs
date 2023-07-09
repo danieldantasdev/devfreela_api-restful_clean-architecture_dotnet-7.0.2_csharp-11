@@ -3,7 +3,7 @@ using MediatR;
 
 namespace DevFreela.Application.Commands.Users.SignUpUser;
 
-public class SignUpUserCommand : IRequest<int>
+public class SignUpUserCommandInputModel : IRequest<SignUpUserCommandViewModel>
 {
     public string FullName { get; set; }
     public string Password { get; set; }

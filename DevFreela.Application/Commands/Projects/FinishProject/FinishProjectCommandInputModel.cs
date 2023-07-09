@@ -2,7 +2,7 @@ using MediatR;
 
 namespace DevFreela.Application.Commands.Projects.FinishProject;
 
-public class FinishProjectCommand : IRequest<bool>
+public class FinishProjectCommandInputModel : IRequest<FinishProjectCommandViewModel>
 {
     public int Id { get; set; }
     public string CreditCardNumber { get; set; }

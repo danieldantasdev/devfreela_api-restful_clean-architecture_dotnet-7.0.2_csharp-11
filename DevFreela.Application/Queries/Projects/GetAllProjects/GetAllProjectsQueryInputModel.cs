@@ -3,9 +3,9 @@ using MediatR;
 
 namespace DevFreela.Application.Queries.Projects.GetAllProjects;
 
-public class GetAllProjectsQuery : IRequest<List<GetAllProjectsViewModel>>
+public class GetAllProjectsQueryInputModel : IRequest<List<GetAllProjectsQueryViewModel>>
 {
-    public GetAllProjectsQuery(string query)
+    public GetAllProjectsQueryInputModel(string query)
     {
         Query = query;
     }

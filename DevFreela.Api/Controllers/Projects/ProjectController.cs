@@ -24,19 +24,19 @@ public class ProjectController : ControllerBase
 
     [HttpPost]
     [Authorize(Roles = "ADMINISTRATOR, CLIENT")]
-    public async Task<IActionResult> Post([FromBody] CreateProjectCommand command)
+    public async Task<IActionResult> Post([FromBody] CreateProjectCommandInputModel commandInputModel)
     {
-        var id = await _mediator.Send(command);
+        var id = await _mediator.Send(commandInputModel);
 
-        return CreatedAtAction(nameof(GetById), new { id = id }, command);
+        return CreatedAtAction(nameof(GetById), new { id = id }, commandInputModel);
     }
 
     // api/projects/1/comments POST
     [HttpPost("{id}/comments")]
     [Authorize(Roles = "ADMINISTRATOR, FREELANCER, CLIENT")]
-    public async Task<IActionResult> PostComment(int id, [FromBody] CreateCommentCommand command)
+    public async Task<IActionResult> PostComment(int id, [FromBody] CreateCommentCommandInputModel commandInputModel)
     {
-        await _mediator.Send(command);
+        await _mediator.Send(commandInputModel);
         return NoContent();
     }
 
@@ -45,7 +45,7 @@ public class ProjectController : ControllerBase
     [Authorize(Roles = "ADMINISTRATOR, CLIENT, FREELANCER")]
     public async Task<IActionResult> Get(string? queryUrl)
     {
-        var query = new GetAllProjectsQuery(queryUrl);
+        var query = new GetAllProjectsQueryInputModel(queryUrl);
         var projects = await _mediator.Send(query);
         return Ok(projects);
     }
@@ -55,7 +55,7 @@ public class ProjectController : ControllerBase
     [Authorize(Roles = "ADMINISTRATOR, CLIENT, FREELANCER")]
     public async Task<IActionResult> GetById(int id)
     {
-        var query = new GetProjectByIdQuery(id);
+        var query = new GetProjectByIdQueryInputModel(id);
 
         var project = await _mediator.Send(query);
 
@@ -70,9 +70,9 @@ public class ProjectController : ControllerBase
     // api/projects/2
     [HttpPut("{id}")]
     [Authorize(Roles = "ADMINISTRATOR, CLIENT")]
-    public async Task<IActionResult> Put(int id, [FromBody] UpdateProjectCommand command)
+    public async Task<IActionResult> Put(int id, [FromBody] UpdateProjectCommandInputModel commandInputModel)
     {
-        await _mediator.Send(command);
+        await _mediator.Send(commandInputModel);
 
         return NoContent();
     }
@@ -82,7 +82,7 @@ public class ProjectController : ControllerBase
     [Authorize(Roles = "ADMINISTRATOR, CLIENT")]
     public async Task<IActionResult> Start(int id)
     {
-        var command = new StartProjectCommand(id);
+        var command = new StartProjectCommandInputModel(id);
         await _mediator.Send(command);
 
         return NoContent();
@@ -91,12 +91,12 @@ public class ProjectController : ControllerBase
     // api/projects/1/finish
     [HttpPut("{id}/finish")]
     [Authorize(Roles = "ADMINISTRATOR, CLIENT")]
-    public async Task<IActionResult> Finish(int id, [FromBody] FinishProjectCommand finishProjectCommand)
+    public async Task<IActionResult> Finish(int id, [FromBody] FinishProjectCommandInputModel finishProjectCommandInputModel)
     {
-        finishProjectCommand.Id = id;
-        var result = await _mediator.Send(finishProjectCommand);
+        finishProjectCommandInputModel.Id = id;
+        var result = await _mediator.Send(finishProjectCommandInputModel);
 
-        if (!result)
+        if (!result.IsFinished)
         {
             return BadRequest("O pagamento não pode ser processado.");
         }
@@ -109,7 +109,7 @@ public class ProjectController : ControllerBase
     [Authorize(Roles = "ADMINISTRATOR, CLIENT")]
     public async Task<IActionResult> Delete(int id)
     {
-        var command = new DeleteProjectCommand(id);
+        var command = new DeleteProjectCommandInputModel(id);
 
         await _mediator.Send(command);
 

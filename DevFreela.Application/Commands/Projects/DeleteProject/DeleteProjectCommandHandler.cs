@@ -3,7 +3,7 @@ using MediatR;
 
 namespace DevFreela.Application.Commands.Projects.DeleteProject;
 
-public class DeleteProjectCommandHandler : IRequestHandler<DeleteProjectCommand, Unit>
+public class DeleteProjectCommandHandler : IRequestHandler<DeleteProjectCommandInputModel, DeleteProjectCommandViewModel>
 {
     private readonly IProjectRepository _projectRepository;
 
@@ -13,14 +13,14 @@ public class DeleteProjectCommandHandler : IRequestHandler<DeleteProjectCommand,
     }
 
 
-    public async Task<Unit> Handle(DeleteProjectCommand deleteProjectCommand, CancellationToken cancellationToken)
+    public async Task<DeleteProjectCommandViewModel> Handle(DeleteProjectCommandInputModel deleteProjectCommandInputModel, CancellationToken cancellationToken)
     {
-        var project = await _projectRepository.GetByIdAsync(deleteProjectCommand.Id);
+        var project = await _projectRepository.GetByIdAsync(deleteProjectCommandInputModel.Id);
 
         project.Cancel();
 
         await _projectRepository.SaveChangesAsync();
 
-        return Unit.Value;
+        return new DeleteProjectCommandViewModel();
     }
 }

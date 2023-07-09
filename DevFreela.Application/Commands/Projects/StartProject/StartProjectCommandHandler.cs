@@ -3,7 +3,7 @@ using MediatR;
 
 namespace DevFreela.Application.Commands.Projects.StartProject;
 
-public class StartProjectCommandHandler : IRequestHandler<StartProjectCommand, Unit>
+public class StartProjectCommandHandler : IRequestHandler<StartProjectCommandInputModel, StartProjectCommandViewModel>
 {
     private readonly IProjectRepository _projectRepository;
 
@@ -12,14 +12,14 @@ public class StartProjectCommandHandler : IRequestHandler<StartProjectCommand, U
         _projectRepository = projectRepository;
     }
     
-    public async Task<Unit> Handle(StartProjectCommand startProjectCommand, CancellationToken cancellationToken)
+    public async Task<StartProjectCommandViewModel> Handle(StartProjectCommandInputModel startProjectCommandInputModel, CancellationToken cancellationToken)
     {
-        var project = await _projectRepository.GetByIdAsync(startProjectCommand.Id);
+        var project = await _projectRepository.GetByIdAsync(startProjectCommandInputModel.Id);
 
         project.Start();
 
         await _projectRepository.StartAsync(project);
 
-        return Unit.Value;
+        return new StartProjectCommandViewModel();
     }
 }

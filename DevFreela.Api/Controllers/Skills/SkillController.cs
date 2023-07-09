@@ -19,7 +19,7 @@ public class SkillController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var query = new GetAllSkillsQuery();
+        var query = new GetAllSkillsQueryInputModel();
         var skills = await _mediator.Send(query);
         return Ok(skills);
     }

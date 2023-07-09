@@ -1,6 +1,6 @@
 namespace DevFreela.Application.Queries.Users.GetAllUsers;
 
-public class GetAllUsersQuery
+public class GetAllUsersQueryViewModel
 {
     
 }

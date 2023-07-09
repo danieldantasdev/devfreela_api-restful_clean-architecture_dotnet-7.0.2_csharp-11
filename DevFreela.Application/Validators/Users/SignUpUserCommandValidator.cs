@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace DevFreela.Application.Validators.Users;
 
-public class SignUpUserCommandValidator : AbstractValidator<SignUpUserCommand>
+public class SignUpUserCommandValidator : AbstractValidator<SignUpUserCommandInputModel>
 {
     public SignUpUserCommandValidator()
     {

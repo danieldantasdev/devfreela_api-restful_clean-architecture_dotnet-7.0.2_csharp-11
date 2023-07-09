@@ -88,7 +88,7 @@ builder.Services.AddHostedService<PaymentApprovedConsumer>();
 //Mediator
 builder.Services.AddMediatR(cfg =>
 {
-    cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly, typeof(CreateProjectCommand).Assembly);
+    cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly, typeof(CreateProjectCommandInputModel).Assembly);
 });
 
 //http

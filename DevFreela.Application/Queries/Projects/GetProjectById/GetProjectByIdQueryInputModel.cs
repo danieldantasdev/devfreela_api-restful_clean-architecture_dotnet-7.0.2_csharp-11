@@ -3,9 +3,9 @@ using MediatR;
 
 namespace DevFreela.Application.Queries.Projects.GetProjectById;
 
-public class GetProjectByIdQuery : IRequest<GetProjectByIdViewModel>
+public class GetProjectByIdQueryInputModel : IRequest<GetProjectByIdQueryViewModel>
 {
-    public GetProjectByIdQuery(int id)
+    public GetProjectByIdQueryInputModel(int id)
     {
         Id = id;
     }

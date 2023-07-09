@@ -13,7 +13,7 @@ public class CreateProjectCommandHandlerTest
         //Arrange
         var projectRepository = new Mock<IProjectRepository>();
 
-        var createProjectCommand = new CreateProjectCommand
+        var createProjectCommand = new CreateProjectCommandInputModel
         {
             Title = "Título de teste",
             Description = "Descrição de Teste",
@@ -28,7 +28,7 @@ public class CreateProjectCommandHandlerTest
         var id = await createProjectCommandHandler.Handle(createProjectCommand, new CancellationToken());
 
         //Assert
-        Assert.True(id >= 0);
+        Assert.True(id.Id >= 0);
 
         projectRepository.Verify(pr => pr.AddAsync(It.IsAny<Project>()), Times.Once);
     }

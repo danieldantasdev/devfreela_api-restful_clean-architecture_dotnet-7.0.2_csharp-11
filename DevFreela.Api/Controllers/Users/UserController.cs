@@ -22,7 +22,7 @@ public class UsersController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var query = new GetUserByIdQuery(id);
+        var query = new GetUserByIdQueryInputModel(id);
         var user = await _mediator.Send(query);
 
         if (user == null)
@@ -35,11 +35,11 @@ public class UsersController : ControllerBase
 
     [HttpPost]
     [AllowAnonymous]
-    public async Task<IActionResult> Post([FromBody] SignUpUserCommand command)
+    public async Task<IActionResult> Post([FromBody] SignUpUserCommandInputModel commandInputModel)
     {
-        var id = await _mediator.Send(command);
+        var id = await _mediator.Send(commandInputModel);
 
-        return CreatedAtAction(nameof(GetById), new { id = id }, command);
+        return CreatedAtAction(nameof(GetById), new { id = id }, commandInputModel);
     }
 
     // api/users
@@ -47,9 +47,9 @@ public class UsersController : ControllerBase
     // api/users/1/login
     [HttpPut("login")]
     [AllowAnonymous]
-    public async Task<IActionResult> Login([FromBody] SignInUserCommand signInUserCommand)
+    public async Task<IActionResult> Login([FromBody] SignInUserCommandInputModel signInUserCommandInputModel)
     {
-        var signInUserViewModel = await _mediator.Send(signInUserCommand);
+        var signInUserViewModel = await _mediator.Send(signInUserCommandInputModel);
 
         if (signInUserViewModel == null)
         {

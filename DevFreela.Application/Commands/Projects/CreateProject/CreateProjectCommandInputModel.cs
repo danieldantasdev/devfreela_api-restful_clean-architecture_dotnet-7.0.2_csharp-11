@@ -2,7 +2,7 @@ using MediatR;
 
 namespace DevFreela.Application.Commands.Projects.CreateProject;
 
-public class CreateProjectCommand:IRequest<int>
+public class CreateProjectCommandInputModel:IRequest<CreateProjectCommandViewModel>
 {
     public string Title { get; set; }
     public string Description { get; set; }

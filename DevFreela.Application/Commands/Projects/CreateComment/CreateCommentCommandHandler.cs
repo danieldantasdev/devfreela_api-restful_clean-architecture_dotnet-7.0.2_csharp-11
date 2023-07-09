@@ -4,7 +4,7 @@ using MediatR;
 
 namespace DevFreela.Application.Commands.Projects.CreateComment;
 
-public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, Unit>
+public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommandInputModel, CreateCommentCommandViewModel>
 {
     private readonly IProjectRepository _projectRepository;
 
@@ -13,12 +13,12 @@ public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand,
         _projectRepository = projectRepository;
     }
 
-    public async Task<Unit> Handle(CreateCommentCommand createCommentCommand, CancellationToken cancellationToken)
+    public async Task<CreateCommentCommandViewModel> Handle(CreateCommentCommandInputModel createCommentCommandInputModel, CancellationToken cancellationToken)
     {
-        var comment = new ProjectComment(createCommentCommand.Content, createCommentCommand.IdProject, createCommentCommand.IdUser);
+        var comment = new ProjectComment(createCommentCommandInputModel.Content, createCommentCommandInputModel.IdProject, createCommentCommandInputModel.IdUser);
 
         await _projectRepository.AddCommentAsync(comment);
 
-        return Unit.Value;
+        return new CreateCommentCommandViewModel();
     }
 }
