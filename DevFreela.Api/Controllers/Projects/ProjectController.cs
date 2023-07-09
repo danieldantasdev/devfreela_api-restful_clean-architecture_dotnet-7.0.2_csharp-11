@@ -42,11 +42,10 @@ public class ProjectController : ControllerBase
 
     // api/projects?query=net core
     [HttpGet]
-    [Authorize(Roles = "ADMINISTRATOR, CLIENT, FREELANCER")]
-    public async Task<IActionResult> Get(string? queryUrl)
+    // [Authorize(Roles = "ADMINISTRATOR, CLIENT, FREELANCER")]
+    public async Task<IActionResult> Get([FromQuery] GetAllProjectsQueryInputModel getAllProjectsQueryInputModel)
     {
-        var query = new GetAllProjectsQueryInputModel(queryUrl);
-        var projects = await _mediator.Send(query);
+        var projects = await _mediator.Send(getAllProjectsQueryInputModel);
         return Ok(projects);
     }
 
@@ -91,7 +90,8 @@ public class ProjectController : ControllerBase
     // api/projects/1/finish
     [HttpPut("{id}/finish")]
     [Authorize(Roles = "ADMINISTRATOR, CLIENT")]
-    public async Task<IActionResult> Finish(int id, [FromBody] FinishProjectCommandInputModel finishProjectCommandInputModel)
+    public async Task<IActionResult> Finish(int id,
+        [FromBody] FinishProjectCommandInputModel finishProjectCommandInputModel)
     {
         finishProjectCommandInputModel.Id = id;
         var result = await _mediator.Send(finishProjectCommandInputModel);

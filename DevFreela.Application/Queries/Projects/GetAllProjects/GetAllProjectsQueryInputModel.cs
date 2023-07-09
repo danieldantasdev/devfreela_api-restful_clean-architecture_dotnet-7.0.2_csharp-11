@@ -1,13 +1,10 @@
+using DevFreela.Core.Dtos.Paginations;
 using MediatR;
 
 namespace DevFreela.Application.Queries.Projects.GetAllProjects;
 
-public class GetAllProjectsQueryInputModel : IRequest<List<GetAllProjectsQueryViewModel>>
+public class GetAllProjectsQueryInputModel : IRequest<PaginationResultDto<GetAllProjectsQueryViewModel>>
 {
-    public GetAllProjectsQueryInputModel(string query)
-    {
-        Query = query;
-    }
-
-    public string Query { get; private set; }
+    public string? Query { get; set; }
+    public int Page { get; set; } = 1;
 }

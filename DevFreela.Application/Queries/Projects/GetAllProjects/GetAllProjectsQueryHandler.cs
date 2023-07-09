@@ -1,9 +1,11 @@
+using DevFreela.Core.Dtos.Paginations;
 using DevFreela.Core.Repositories.Interfaces.Projects;
 using MediatR;
 
 namespace DevFreela.Application.Queries.Projects.GetAllProjects;
 
-public class GetAllProjectsQueryHandler : IRequestHandler<GetAllProjectsQueryInputModel, List<GetAllProjectsQueryViewModel>>
+public class GetAllProjectsQueryHandler : IRequestHandler<GetAllProjectsQueryInputModel,
+    PaginationResultDto<GetAllProjectsQueryViewModel>>
 {
     private readonly IProjectRepository _projectRepository;
 
@@ -12,14 +14,25 @@ public class GetAllProjectsQueryHandler : IRequestHandler<GetAllProjectsQueryInp
         _projectRepository = projectRepository;
     }
 
-    public async Task<List<GetAllProjectsQueryViewModel>> Handle(GetAllProjectsQueryInputModel getAllSkillsQueryInputModel,
+    public async Task<PaginationResultDto<GetAllProjectsQueryViewModel>> Handle(
+        GetAllProjectsQueryInputModel getAllSkillsQueryInputModel,
         CancellationToken cancellationToken)
     {
-        var projects = await _projectRepository.GetAllAsync();
+        var paginationProjects =
+            await _projectRepository.GetAllAsync(getAllSkillsQueryInputModel.Query, getAllSkillsQueryInputModel.Page);
 
-        var getAllProjectViewModel = projects.Select(p => new GetAllProjectsQueryViewModel(p.Id, p.Title, p.CreatedAt))
+        var getAllProjectViewModel = paginationProjects.Data
+            .Select(p => new GetAllProjectsQueryViewModel(p.Id, p.Title, p.Description, p.CreatedAt))
             .ToList();
 
-        return getAllProjectViewModel;
+        var paginationProjectsViewModel = new PaginationResultDto<GetAllProjectsQueryViewModel>(
+            paginationProjects.Page,
+            paginationProjects.TotalPages,
+            paginationProjects.PageSize,
+            paginationProjects.ItemsCount,
+            getAllProjectViewModel
+        );
+
+        return paginationProjectsViewModel;
     }
 }
