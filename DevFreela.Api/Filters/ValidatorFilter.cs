@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace DevFreela.API.Filters;
+namespace DevFreela.Api.Filters;
 
 public class ValidatorFilter : IActionFilter
 {

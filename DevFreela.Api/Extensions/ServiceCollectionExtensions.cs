@@ -11,7 +11,7 @@ using DevFreela.Infrastructure.Services.Implementations.Auth;
 using DevFreela.Infrastructure.Services.Implementations.MessageBus;
 using DevFreela.Infrastructure.Services.Implementations.Payments;
 
-namespace DevFreela.API.Extensions;
+namespace DevFreela.Api.Extensions;
 
 public static class ServiceCollectionExtensions
 {

@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DevFreela.API.Controllers.Skills;
+namespace DevFreela.Api.Controllers.Skills;
 
 [Route("api/skills")]
 [Authorize]

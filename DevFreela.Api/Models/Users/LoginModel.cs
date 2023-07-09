@@ -1,4 +1,4 @@
-﻿namespace DevFreela.API.Models.Users
+﻿namespace DevFreela.Api.Models.Users
 {
     public class LoginModel
     {

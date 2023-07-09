@@ -10,7 +10,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DevFreela.API.Controllers.Projects;
+namespace DevFreela.Api.Controllers.Projects;
 
 [Route("api/projects")]
 public class ProjectController : ControllerBase

@@ -1,4 +1,4 @@
-﻿namespace DevFreela.API.Models
+﻿namespace DevFreela.Api.Models
 {
     public class OpeningTimeOption
     {

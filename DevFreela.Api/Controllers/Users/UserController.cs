@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DevFreela.API.Controllers.Users;
+namespace DevFreela.Api.Controllers.Users;
 
 [Route("api/users")]
 [Authorize]
