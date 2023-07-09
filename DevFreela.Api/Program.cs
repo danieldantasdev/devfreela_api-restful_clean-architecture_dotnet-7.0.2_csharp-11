@@ -1,16 +1,5 @@
-using System.Text;
 using DevFreela.Api.Extensions;
 using DevFreela.Api.Filters;
-using DevFreela.Api.Models;
-using DevFreela.Application.Commands.Projects.CreateProject;
-using DevFreela.Application.Consumers;
-using DevFreela.Application.Validators.Users;
-using DevFreela.Infrastructure.Persistence.Context;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,50 +38,9 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services
-    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey
-                (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-        };
-    });
-
-builder.Services.Configure<OpeningTimeOption>(builder.Configuration.GetSection("OpeningTime"));
-
-//Database
-var connectionString = builder.Configuration.GetConnectionString("DevFreelaConnectionString");
-builder.Services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
-
-//Controller
 builder.Services.AddControllers(options => options.Filters.Add<ValidatorFilter>());
-
-//FluentValidation
-builder.Services.AddFluentValidationAutoValidation();
-builder.Services.AddFluentValidationClientsideAdapters();
-builder.Services.AddValidatorsFromAssemblyContaining<SignUpUserCommandValidator>();
-
-//Di
-builder.Services.AddInfrastructure();
-builder.Services.AddHostedService<PaymentApprovedConsumer>();
-
-//Mediator
-builder.Services.AddMediatR(cfg =>
-{
-    cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly, typeof(CreateProjectCommandInputModel).Assembly);
-});
-
-//http
-// builder.Services.AddHttpClient();
+builder.Services.AddInfrastructureExtension(builder.Configuration);
+builder.Services.AddApplicationExtension();
 
 var app = builder.Build();
 

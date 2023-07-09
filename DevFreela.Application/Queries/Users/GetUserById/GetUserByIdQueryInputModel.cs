@@ -1,4 +1,3 @@
-using DevFreela.Application.ViewModels.Users;
 using MediatR;
 
 namespace DevFreela.Application.Queries.Users.GetUserById;

@@ -1,4 +1,3 @@
-using DevFreela.Application.ViewModels.Projects;
 using DevFreela.Core.Repositories.Interfaces.Projects;
 using MediatR;
 

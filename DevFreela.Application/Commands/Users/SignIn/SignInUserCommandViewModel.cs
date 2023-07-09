@@ -1,4 +1,4 @@
-namespace DevFreela.Application.ViewModels.Users;
+namespace DevFreela.Application.Commands.Users.SignIn;
 
 public class SignInUserCommandViewModel
 {

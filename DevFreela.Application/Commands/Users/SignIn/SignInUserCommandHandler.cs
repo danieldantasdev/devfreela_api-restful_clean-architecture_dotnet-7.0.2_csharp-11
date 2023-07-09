@@ -1,9 +1,8 @@
-using DevFreela.Application.ViewModels.Users;
 using DevFreela.Core.Repositories.Interfaces.Users;
 using DevFreela.Core.Services.Interfaces.Auth;
 using MediatR;
 
-namespace DevFreela.Application.Commands.Users.SignInUser;
+namespace DevFreela.Application.Commands.Users.SignIn;
 
 public class SignInUserCommandHandler : IRequestHandler<SignInUserCommandInputModel, SignInUserCommandViewModel>
 {

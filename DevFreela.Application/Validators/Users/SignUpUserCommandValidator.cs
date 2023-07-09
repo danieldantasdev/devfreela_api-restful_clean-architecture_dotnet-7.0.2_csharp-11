@@ -1,5 +1,5 @@
 using System.Text.RegularExpressions;
-using DevFreela.Application.Commands.Users.SignUpUser;
+using DevFreela.Application.Commands.Users.SignUp;
 using FluentValidation;
 
 namespace DevFreela.Application.Validators.Users;

@@ -1,5 +1,5 @@
-﻿using DevFreela.Application.Commands.Users.SignInUser;
-using DevFreela.Application.Commands.Users.SignUpUser;
+﻿using DevFreela.Application.Commands.Users.SignIn;
+using DevFreela.Application.Commands.Users.SignUp;
 using DevFreela.Application.Queries.Users.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

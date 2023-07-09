@@ -1,7 +1,6 @@
-using DevFreela.Application.ViewModels.Users;
 using MediatR;
 
-namespace DevFreela.Application.Commands.Users.SignInUser;
+namespace DevFreela.Application.Commands.Users.SignIn;
 
 public class SignInUserCommandInputModel : IRequest<SignInUserCommandViewModel>
 {

@@ -1,4 +1,3 @@
-using DevFreela.Application.ViewModels.Projects;
 using MediatR;
 
 namespace DevFreela.Application.Queries.Projects.GetAllProjects;

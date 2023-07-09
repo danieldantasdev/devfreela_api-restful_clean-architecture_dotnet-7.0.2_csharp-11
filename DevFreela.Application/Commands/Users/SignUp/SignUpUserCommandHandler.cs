@@ -4,7 +4,7 @@ using DevFreela.Core.Services.Interfaces.Auth;
 using DevFreela.Infrastructure.Persistence.Context;
 using MediatR;
 
-namespace DevFreela.Application.Commands.Users.SignUpUser;
+namespace DevFreela.Application.Commands.Users.SignUp;
 
 public class SignUpUserCommandHandler : IRequestHandler<SignUpUserCommandInputModel, SignUpUserCommandViewModel>
 {

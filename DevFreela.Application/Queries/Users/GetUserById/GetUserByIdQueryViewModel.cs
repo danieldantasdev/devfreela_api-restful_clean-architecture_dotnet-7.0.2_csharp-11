@@ -1,4 +1,4 @@
-namespace DevFreela.Application.ViewModels.Users;
+namespace DevFreela.Application.Queries.Users.GetUserById;
 
 public class GetUserByIdQueryViewModel
 {

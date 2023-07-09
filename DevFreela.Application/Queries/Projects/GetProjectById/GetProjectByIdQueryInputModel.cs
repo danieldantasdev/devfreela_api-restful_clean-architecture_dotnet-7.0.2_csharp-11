@@ -1,5 +1,4 @@
-﻿using DevFreela.Application.ViewModels.Projects;
-using MediatR;
+﻿using MediatR;
 
 namespace DevFreela.Application.Queries.Projects.GetProjectById;
 

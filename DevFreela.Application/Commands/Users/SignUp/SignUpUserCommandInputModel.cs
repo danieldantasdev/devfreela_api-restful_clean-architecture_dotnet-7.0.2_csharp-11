@@ -1,7 +1,7 @@
 ﻿using DevFreela.Core.Enums.Users;
 using MediatR;
 
-namespace DevFreela.Application.Commands.Users.SignUpUser;
+namespace DevFreela.Application.Commands.Users.SignUp;
 
 public class SignUpUserCommandInputModel : IRequest<SignUpUserCommandViewModel>
 {

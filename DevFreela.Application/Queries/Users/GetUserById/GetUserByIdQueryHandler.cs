@@ -1,4 +1,3 @@
-using DevFreela.Application.ViewModels.Users;
 using DevFreela.Core.Repositories.Interfaces.Users;
 using MediatR;
 

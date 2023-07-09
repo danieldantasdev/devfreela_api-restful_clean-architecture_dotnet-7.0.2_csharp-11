@@ -1,4 +1,4 @@
-namespace DevFreela.Application.Commands.Users.SignUpUser;
+namespace DevFreela.Application.Commands.Users.SignUp;
 
 public class SignUpUserCommandViewModel
 {
