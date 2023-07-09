@@ -5,7 +5,7 @@ namespace DevFreela.Core.Repositories.Interfaces.Projects;
 
 public interface IProjectRepository
 {
-    Task<PaginationResultDto<Project>> GetAllAsync(string query, int page = 1);
+    Task<PaginationResultDto<Project>> GetAllAsync(string query, int page, int pageSize);
     Task<Project> GetDetailsByIdAsync(int id);
     Task<Project> GetByIdAsync(int id);
     Task AddAsync(Project project);
