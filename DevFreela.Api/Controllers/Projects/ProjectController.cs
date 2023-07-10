@@ -22,7 +22,7 @@ public class ProjectController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost]
+    [HttpPost("create")]
     [Authorize(Roles = "ADMINISTRATOR, CLIENT")]
     public async Task<IActionResult> Post([FromBody] CreateProjectCommandInputModel commandInputModel)
     {
@@ -41,7 +41,7 @@ public class ProjectController : ControllerBase
     }
 
     // api/projects?query=net core
-    [HttpGet]
+    [HttpGet("get-all")]
     [Authorize(Roles = "ADMINISTRATOR, CLIENT, FREELANCER")]
     public async Task<IActionResult> Get([FromQuery] GetAllProjectsQueryInputModel getAllProjectsQueryInputModel)
     {
@@ -50,7 +50,7 @@ public class ProjectController : ControllerBase
     }
 
     // api/projects/2
-    [HttpGet("{id}")]
+    [HttpGet("get-by-id/{id}")]
     [Authorize(Roles = "ADMINISTRATOR, CLIENT, FREELANCER")]
     public async Task<IActionResult> GetById(int id)
     {
@@ -67,7 +67,7 @@ public class ProjectController : ControllerBase
     }
 
     // api/projects/2
-    [HttpPut("{id}")]
+    [HttpPut("update/{id}")]
     [Authorize(Roles = "ADMINISTRATOR, CLIENT")]
     public async Task<IActionResult> Put(int id, [FromBody] UpdateProjectCommandInputModel commandInputModel)
     {
@@ -105,7 +105,7 @@ public class ProjectController : ControllerBase
     }
 
     // api/projects/3 DELETE
-    [HttpDelete("{id}")]
+    [HttpDelete("delete/{id}")]
     [Authorize(Roles = "ADMINISTRATOR, CLIENT")]
     public async Task<IActionResult> Delete(int id)
     {

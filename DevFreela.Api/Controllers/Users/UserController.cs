@@ -19,7 +19,7 @@ public class UsersController : ControllerBase
     }
 
     // api/users/1
-    [HttpGet("{id}")]
+    [HttpGet("get-by-id/{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         var query = new GetUserByIdQueryInputModel(id);
@@ -33,7 +33,7 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
-    [HttpPost]
+    [HttpPost("signup")]
     [AllowAnonymous]
     public async Task<IActionResult> Post([FromBody] SignUpUserCommandInputModel commandInputModel)
     {
@@ -45,7 +45,7 @@ public class UsersController : ControllerBase
     // api/users
 
     // api/users/1/login
-    [HttpPut("login")]
+    [HttpPost("signin")]
     [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] SignInUserCommandInputModel signInUserCommandInputModel)
     {
