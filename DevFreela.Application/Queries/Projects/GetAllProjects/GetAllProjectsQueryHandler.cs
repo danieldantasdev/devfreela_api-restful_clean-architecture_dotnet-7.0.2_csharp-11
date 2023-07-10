@@ -19,7 +19,7 @@ public class GetAllProjectsQueryHandler : IRequestHandler<GetAllProjectsQueryInp
         CancellationToken cancellationToken)
     {
         var paginationProjects =
-            await _projectRepository.GetAllAsync(getAllSkillsQueryInputModel.Query, getAllSkillsQueryInputModel.Page);
+            await _projectRepository.GetAllAsync(getAllSkillsQueryInputModel.Query, getAllSkillsQueryInputModel.Page, getAllSkillsQueryInputModel.PageSize);
 
         var getAllProjectViewModel = paginationProjects.Data
             .Select(p => new GetAllProjectsQueryViewModel(p.Id, p.Title, p.Description, p.CreatedAt))

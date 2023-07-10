@@ -13,8 +13,7 @@ namespace DevFreela.Infrastructure.Persistence.Repositories.Implementations.Proj
 public class ProjectRepository : IProjectRepository
 {
     private readonly DevFreelaDbContext _devFreelaDbContext;
-    private readonly string _connectionString;
-    private readonly int PAGE_SIZE = 2;
+    private readonly string? _connectionString;
 
     public ProjectRepository(DevFreelaDbContext dbContext, IConfiguration configuration)
     {
@@ -22,7 +21,7 @@ public class ProjectRepository : IProjectRepository
         _connectionString = configuration.GetConnectionString("DevFreelaConnectionString");
     }
 
-    public async Task<PaginationResultDto<Project>>  GetAllAsync(string query, int page)
+    public async Task<PaginationResultDto<Project>>  GetAllAsync(string query, int page, int pageSize)
     {
         IQueryable<Project> projects = _devFreelaDbContext.Projects;
 
@@ -34,7 +33,7 @@ public class ProjectRepository : IProjectRepository
             );
         }
 
-        return await projects.GetPaged<Project>(page, PAGE_SIZE);
+        return await projects.GetPaged<Project>(page, pageSize);
     }
 
     public async Task<Project> GetDetailsByIdAsync(int id)
