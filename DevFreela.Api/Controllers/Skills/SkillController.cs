@@ -16,7 +16,7 @@ public class SkillController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet]
+    [HttpGet("get-all")]
     public async Task<IActionResult> Get()
     {
         var query = new GetAllSkillsQueryInputModel();
