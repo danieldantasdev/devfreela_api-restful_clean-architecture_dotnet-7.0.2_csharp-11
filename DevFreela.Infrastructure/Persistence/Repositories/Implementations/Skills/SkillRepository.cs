@@ -1,6 +1,9 @@
 using Dapper;
 using DevFreela.Core.Dtos.Skills;
+using DevFreela.Core.Entities.Projects;
+using DevFreela.Core.Entities.Skills;
 using DevFreela.Core.Repositories.Interfaces.Skills;
+using DevFreela.Infrastructure.Persistence.Context;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 
@@ -9,10 +12,12 @@ namespace DevFreela.Infrastructure.Persistence.Repositories.Implementations.Skil
 public class SkillRepository : ISkillRepository
 {
     private readonly string? _connectionString;
+    private readonly DevFreelaDbContext _devFreelaDbContext;
 
-    public SkillRepository(IConfiguration connectionString)
+    public SkillRepository(IConfiguration connectionString, DevFreelaDbContext devFreelaDbContext)
     {
         _connectionString = connectionString.GetConnectionString("DevFreelaConnectionString");
+        _devFreelaDbContext = devFreelaDbContext;
     }
 
     public async Task<List<SkillDto>> GetAllAsync()
@@ -34,5 +39,17 @@ public class SkillRepository : ISkillRepository
         //    .ToList();
 
         //return skillsViewModel;
+    }
+    
+    public async Task AddSkillFromProject(Project project)
+    {
+        // App Xamarin de Marketplace
+        var words = project.Description.Split(' ');
+        var length = words.Length;
+
+        var skill = $"{project.Id} - {words[length - 1]}";
+        // "1 - Marketplace"
+            
+        await _devFreelaDbContext.Skills.AddAsync(new Skill(skill));
     }
 }
