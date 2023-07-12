@@ -21,7 +21,7 @@ public class ProjectRepository : IProjectRepository
         _connectionString = configuration.GetConnectionString("DevFreelaConnectionString");
     }
 
-    public async Task<PaginationResultDto<Project>>  GetAllAsync(string query, int page, int pageSize)
+    public async Task<PaginationResultDto<Project>> GetAllAsync(string query, int page, int pageSize)
     {
         IQueryable<Project> projects = _devFreelaDbContext.Projects;
 
@@ -69,12 +69,22 @@ public class ProjectRepository : IProjectRepository
 
     public async Task<Project> GetByIdAsync(int id)
     {
-        return await _devFreelaDbContext.Projects.SingleOrDefaultAsync(p => p.Id == id);
+        return (
+            await _devFreelaDbContext.Projects
+                .AsNoTracking()
+                .SingleOrDefaultAsync(p => p.Id == id))!;
     }
 
     public async Task AddCommentAsync(ProjectComment projectComment)
     {
         await _devFreelaDbContext.ProjectComments.AddAsync(projectComment);
+        await _devFreelaDbContext.SaveChangesAsync();
+    }
+
+    public async Task UpdateAsync(Project project)
+    {
+        // _devFreelaDbContext.Entry(project).State = EntityState.Modified;
+        _devFreelaDbContext.Update(project);
         await _devFreelaDbContext.SaveChangesAsync();
     }
 }
