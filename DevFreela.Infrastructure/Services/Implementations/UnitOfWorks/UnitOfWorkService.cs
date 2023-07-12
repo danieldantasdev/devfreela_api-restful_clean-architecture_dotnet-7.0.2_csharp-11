@@ -12,17 +12,15 @@ public class UnitOfWorkService : IUnitOfWorkService
     public IProjectRepository ProjectRepository { get; }
     public IUserRepository UserRepository { get; }
     public ISkillRepository SkillRepository { get; }
-    private IDbContextTransaction _dbContextTransaction;
+    private IDbContextTransaction? _dbContextTransaction;
     private readonly DevFreelaDbContext _devFreelaDbContext;
 
     public UnitOfWorkService(IProjectRepository projectRepository, IUserRepository userRepository,
-        ISkillRepository skillRepository, IDbContextTransaction dbContextTransaction,
-        DevFreelaDbContext devFreelaDbContext)
+        ISkillRepository skillRepository, DevFreelaDbContext devFreelaDbContext)
     {
         ProjectRepository = projectRepository;
         UserRepository = userRepository;
         SkillRepository = skillRepository;
-        _dbContextTransaction = dbContextTransaction;
         _devFreelaDbContext = devFreelaDbContext;
     }
 
@@ -40,11 +38,11 @@ public class UnitOfWorkService : IUnitOfWorkService
     {
         try
         {
-            await _dbContextTransaction.CommitAsync();
+            await _dbContextTransaction!.CommitAsync();
         }
         catch (Exception e)
         {
-            await _dbContextTransaction.RollbackAsync();
+            await _dbContextTransaction!.RollbackAsync();
             throw;
         }
     }
