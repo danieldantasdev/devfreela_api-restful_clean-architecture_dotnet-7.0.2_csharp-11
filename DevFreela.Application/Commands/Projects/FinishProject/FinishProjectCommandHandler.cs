@@ -28,7 +28,7 @@ public class FinishProjectCommandHandler : IRequestHandler<FinishProjectCommandI
 
         project.SetPaymentPending();
 
-        await _projectRepository.SaveChangesAsync();
+        await _projectRepository.UpdateAsync(project);
 
         return new FinishProjectCommandViewModel(true);
     }

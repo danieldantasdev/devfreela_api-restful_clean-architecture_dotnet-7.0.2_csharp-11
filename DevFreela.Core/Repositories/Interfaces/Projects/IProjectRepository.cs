@@ -12,4 +12,5 @@ public interface IProjectRepository
     Task StartAsync(Project project);
     Task AddCommentAsync(ProjectComment projectComment);
     Task SaveChangesAsync();
+    Task UpdateAsync(Project project);
 }
