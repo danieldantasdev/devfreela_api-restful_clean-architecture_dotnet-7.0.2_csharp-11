@@ -1,6 +1,8 @@
 using DevFreela.Application.Commands.Projects.CreateProject;
 using DevFreela.Core.Entities.Projects;
 using DevFreela.Core.Repositories.Interfaces.Projects;
+using DevFreela.Core.Repositories.Interfaces.Skills;
+using DevFreela.Core.Services.Interfaces.UnitOfWorks;
 using Moq;
 
 namespace DevFreela.UnitTests.Application.Commands.Projects;
@@ -12,6 +14,11 @@ public class CreateProjectCommandHandlerTest
     {
         //Arrange
         var projectRepository = new Mock<IProjectRepository>();
+        var skillRepository = new Mock<ISkillRepository>();
+        var unitOfWorkService = new Mock<IUnitOfWorkService>();
+
+        unitOfWorkService.SetupGet(uow => uow.ProjectRepository).Returns(projectRepository.Object);
+        unitOfWorkService.SetupGet(uow => uow.SkillRepository).Returns(skillRepository.Object);
 
         var createProjectCommand = new CreateProjectCommandInputModel
         {
@@ -22,7 +29,7 @@ public class CreateProjectCommandHandlerTest
             TotalCost = 1000
         };
 
-        var createProjectCommandHandler = new CreateProjectCommandHandler(projectRepository.Object);
+        var createProjectCommandHandler = new CreateProjectCommandHandler(unitOfWorkService.Object);
 
         //Act
         var id = await createProjectCommandHandler.Handle(createProjectCommand, new CancellationToken());
