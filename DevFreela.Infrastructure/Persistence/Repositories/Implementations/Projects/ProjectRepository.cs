@@ -47,7 +47,6 @@ public class ProjectRepository : IProjectRepository
     public async Task AddAsync(Project project)
     {
         await _devFreelaDbContext.Projects.AddAsync(project);
-        await _devFreelaDbContext.SaveChangesAsync();
     }
 
     public async Task StartAsync(Project project)

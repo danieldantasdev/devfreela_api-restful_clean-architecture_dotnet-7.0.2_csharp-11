@@ -5,6 +5,7 @@ using DevFreela.Core.Repositories.Interfaces.Users;
 using DevFreela.Core.Services.Interfaces.Auth;
 using DevFreela.Core.Services.Interfaces.MessageBus;
 using DevFreela.Core.Services.Interfaces.Payments;
+using DevFreela.Core.Services.Interfaces.UnitOfWorks;
 using DevFreela.Infrastructure.Persistence.Context;
 using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Projects;
 using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Skills;
@@ -12,6 +13,7 @@ using DevFreela.Infrastructure.Persistence.Repositories.Implementations.Users;
 using DevFreela.Infrastructure.Services.Implementations.Auth;
 using DevFreela.Infrastructure.Services.Implementations.MessageBus;
 using DevFreela.Infrastructure.Services.Implementations.Payments;
+using DevFreela.Infrastructure.Services.Implementations.UnitOfWorks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -36,6 +38,7 @@ public static class InfrastructureExtension
         serviceCollection.AddScoped<IAuthService, AuthService>();
         serviceCollection.AddScoped<IPaymentService, PaymentService>();
         serviceCollection.AddScoped<IMessageBusService, MessageBusService>();
+        serviceCollection.AddScoped<IUnitOfWorkService, UnitOfWorkService>();
         return serviceCollection;
     }
 
